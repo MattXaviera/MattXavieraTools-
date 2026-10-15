@@ -80,6 +80,12 @@
         .cl-list b { color: var(--text-white); }
         .coming-soon { margin-top: 16px; padding: 14px 16px; border-radius: 10px; background: rgba(245,158,11,0.1); border: 1px solid var(--warning); color: var(--warning); font-size: 13px; line-height: 1.6; }
         .btn-download { background: linear-gradient(135deg, #059669, #10b981); }
+        .ext-card { margin-bottom: 20px; padding: 18px 16px; border-radius: 12px; background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.4); text-align: center; }
+        .ext-card h3 { color: #34d399; margin-bottom: 8px; font-size: 16px; }
+        .ext-card p { color: var(--text-gray); font-size: 13px; line-height: 1.6; margin-bottom: 14px; }
+        .ext-card a.btn-ext { display: block; padding: 14px; border-radius: 10px; background: linear-gradient(135deg, #059669, #10b981); color: #fff; font-weight: 700; text-decoration: none; transition: transform .2s; }
+        .ext-card a.btn-ext:hover { transform: translateY(-2px); }
+        .ext-card .ext-steps { margin-top: 12px; text-align: left; font-size: 12.5px; color: var(--text-gray); line-height: 1.7; }
         /* Enhance Foto */
         .enhance-canvas-box img { display: block; width: 100%; height: 300px; object-fit: contain; background: #000; }
         .enh-open { display: block; text-align: center; margin-top: 10px; color: var(--pink); font-size: 13px; font-weight: 600; text-decoration: none; }
@@ -458,6 +464,16 @@
             </div>
 
             <div class="tab-content" id="tab-download">
+                <div class="ext-card">
+                    <h3>🧩 Download Extensi MattXavieraTools</h3>
+                    <p>Unduh extension MattXavieraTools (file ZIP) lewat MediaFire.</p>
+                    <a class="btn-ext" href="https://www.mediafire.com/file/mikcc6hkalcovn2/MattXavieraTools.zip/file" target="_blank" rel="noopener noreferrer">⬇️ Download Extensi (.zip)</a>
+                    <div class="ext-steps">
+                        1. Download dan ekstrak file ZIP.<br>
+                        2. Buka <b>chrome://extensions</b> lalu aktifkan <b>Developer mode</b>.<br>
+                        3. Klik <b>Load unpacked</b> dan pilih folder hasil ekstrak.
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="dlUrl">Link Video</label>
                     <div class="tt-row">
@@ -634,6 +650,7 @@
                     <li style="padding: 6px 0;">✓ <strong>Patch MP4</strong> - Inject watermark, fix metadata, optimasi untuk TikTok</li>
                     <li style="padding: 6px 0;">✓ <strong>Analyzer</strong> - Resolusi, fps, bitrate, GOP, codec, audio, warna/HDR (parser internal)</li>
                     <li style="padding: 6px 0;">✓ <strong>TikTok</strong> - Tempel link langsung dianalisis tanpa download file + statistik video (atau analisis via upload)</li>
+                    <li style="padding: 6px 0;">✓ <strong>Download Extensi</strong> - Unduh extension MattXavieraTools (ZIP) di tab Download</li>
                     <li style="padding: 6px 0;">✓ <strong>Download</strong> - Download video via link <em>(segera hadir)</em></li>
                     <li style="padding: 6px 0;">✓ <strong>Enhance Foto</strong> - Detail, structure, sharpen, denoise dengan toggle aktif/nonaktif per fitur (mode Offline; Online AI segera hadir)</li>
                     <li style="padding: 6px 0;">✓ <strong>Resolusi Foto</strong> - fitur terpisah: perbesar ke Full HD / 2K / Ultra HD / kustom</li>
@@ -647,7 +664,13 @@
                 <summary>📝 Changelog</summary>
                 <div class="acc-body">
                     <div class="cl-entry">
-                        <div class="cl-date">15 Oktober 2026 — Update terbaru</div>
+                        <div class="cl-date">16 Oktober 2026 — Update terbaru</div>
+                        <ul class="cl-list">
+                            <li>🧩 <b>Download Extensi:</b> tombol unduh extension MattXavieraTools (ZIP) di tab Download</li>
+                        </ul>
+                    </div>
+                    <div class="cl-entry" style="margin-top:14px;">
+                        <div class="cl-date">15 Oktober 2026</div>
                         <ul class="cl-list">
                             <li>🎚️ <b>Enhance Foto:</b> tiap fitur (Detail, Structure, Sharpen, Denoise) kini punya toggle aktif/nonaktif</li>
                             <li>📐 <b>Tab Resolusi baru:</b> resolusi dipisah jadi fitur sendiri (Full HD, 2K, Ultra HD, kustom)</li>
