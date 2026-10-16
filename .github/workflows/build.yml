@@ -30,9 +30,20 @@ jobs:
           npm i -D @capacitor/assets
           npx capacitor-assets generate --android --iconBackgroundColor '#000000' --iconBackgroundColorDark '#000000'
           npx cap sync android
-      - name: Build APK
-        run: cd android && chmod +x gradlew && ./gradlew assembleDebug
+      - name: Build APK release
+        run: cd android && chmod +x gradlew && ./gradlew assembleRelease
+      - name: Tanda tangani APK dengan keystore tetap
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KS_PASS: ${{ secrets.KS_PASS }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > release.jks
+          BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
+          UNSIGNED=android/app/build/outputs/apk/release/app-release-unsigned.apk
+          $BT/zipalign -p -f 4 $UNSIGNED aligned.apk
+          $BT/apksigner sign --ks release.jks --ks-key-alias mattxaviera --ks-pass env:KS_PASS --key-pass env:KS_PASS --out MattXavieraTools.apk aligned.apk
+          rm release.jks
       - uses: actions/upload-artifact@v4
         with:
           name: MattXavieraTools-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: MattXavieraTools.apk
