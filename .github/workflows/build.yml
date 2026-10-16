@@ -26,7 +26,7 @@ jobs:
           }
           EOF2
           npx cap add android
-          mkdir -p assets && cp icon-only.png assets/icon-only.png
+          mkdir -p assets && (cp icon-only.png assets/icon-only.png || cp .github/workflows/icon-only.png assets/icon-only.png)
           npm i -D @capacitor/assets
           npx capacitor-assets generate --android --iconBackgroundColor '#000000' --iconBackgroundColorDark '#000000'
           npx cap sync android
