@@ -309,15 +309,97 @@
         .enhance-control.off input[type="range"]{opacity:.3}
         .enhance-control.off .ctl-name{opacity:.5}
         .btn-res{background:linear-gradient(135deg,#0891b2,#3b82f6);margin-top:12px}
+
+        /* Menu samping (slide kiri) */
+        .side{position:fixed;top:0;left:0;bottom:0;width:270px;z-index:60;display:flex;flex-direction:column;padding:18px 14px;background:linear-gradient(180deg,rgba(10,14,26,.92),rgba(8,11,22,.96));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-right:1px solid rgba(59,130,246,.25);overflow-y:auto;transition:transform .28s ease}
+        .side-head{font-weight:800;font-size:17px;margin:4px 6px 6px}
+        .side-sub{font-size:12px;color:var(--text-gray);margin:0 6px 4px}
+        .side-grp{margin:16px 8px 8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-gray);opacity:.85}
+        .side .tab-btn{display:flex;align-items:center;gap:10px;width:100%;flex:none;text-align:left;padding:12px 14px;margin-bottom:6px;font-size:14px}
+        .side .tab-btn::after{content:'';margin-left:auto;flex:none;width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e}
+        .side .tab-btn:not(.active):hover{border-color:rgba(59,130,246,.6);color:#fff}
+        .menu-btn{display:none;position:fixed;top:12px;left:12px;z-index:55;width:44px;height:44px;border-radius:12px;border:1px solid rgba(59,130,246,.4);background:rgba(10,14,26,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:20px;cursor:pointer}
+        .scrim{position:fixed;inset:0;z-index:58;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .25s}
+        @media (min-width:1000px){body{padding-left:270px}}
+        @media (max-width:999px){.side{transform:translateX(-100%);width:min(82vw,300px)}.side.open{transform:none;box-shadow:12px 0 40px rgba(0,0,0,.6)}.menu-btn{display:block}.scrim.show{opacity:1;pointer-events:auto}.container{padding-top:64px}}
+        .ext-card a.btn-ext[aria-disabled="true"]{opacity:.5;pointer-events:none;background:#374151}
+        .dl-meta{display:flex;gap:12px;align-items:center;margin-top:18px}
+        .dl-meta img{width:72px;height:96px;object-fit:cover;border-radius:10px;flex:none;background:#111827}
+        .dl-meta .dl-t{font-size:13px;line-height:1.5;color:var(--text-gray);min-width:0;word-break:break-word}
+        .dl-row{display:flex;gap:8px;margin-top:10px}
+        .dl-row .btn{flex:1;margin:0}
+        .dl-row a.tt-mini{display:flex;align-items:center;text-decoration:none;white-space:nowrap}
+
+        /* Beranda */
+        .hero{position:relative;text-align:center;padding:26px 12px 22px;border-radius:16px;background:radial-gradient(circle at 50% 0%,rgba(239,28,28,.18),transparent 64%);margin-bottom:18px}
+        .hero h2{margin:6px 0 10px;font-size:24px}
+        .hero p{color:var(--text-gray);font-size:14px;line-height:1.7;max-width:580px;margin:0 auto}
+        .howto{padding:16px;border-radius:12px;background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.22);margin-bottom:20px}
+        .howto h3{color:var(--blue-light);margin-bottom:8px;font-size:15px}
+        .howto ol{padding-left:20px;color:var(--text-gray);font-size:13.5px;line-height:1.8}
+        .howto-note{color:var(--text-gray);font-size:12px;line-height:1.6;margin-top:10px}
+        .home-h{font-size:16px;margin-bottom:12px}
+        .home-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+        .fcard{text-align:left;cursor:pointer;padding:16px;border-radius:14px;background:rgba(10,14,26,.7);border:1px solid rgba(59,130,246,.22);color:var(--text-white);font:inherit;transition:transform .2s,border-color .2s}
+        .fcard:hover{transform:translateY(-3px);border-color:var(--blue-glow)}
+        .fcard .ft{font-weight:700;font-size:15px;margin-bottom:6px}
+        .fcard .fd{color:var(--text-gray);font-size:12.5px;line-height:1.6;margin-bottom:8px}
+        .fcard .fh{font-size:12px;color:var(--blue-light);line-height:1.6}
+        .fcard .fgo{margin-top:10px;font-size:12.5px;font-weight:700;color:#86efac}
+        /* 666 glitch merah */
+        .g666-wrap{line-height:1;overflow:hidden;padding:6px 0 2px}
+        .g666{position:relative;display:inline-block;font-size:clamp(64px,19vw,120px);font-weight:900;letter-spacing:.08em;color:#ef1c1c;text-shadow:0 0 16px rgba(239,28,28,.75),0 0 44px rgba(239,28,28,.4);animation:g666flick 3.4s infinite}
+        .g666::before,.g666::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%}
+        .g666::before{color:#ff6b6b;transform:translateX(-4px);clip-path:inset(0 0 58% 0);animation:g666a 2.2s infinite linear alternate-reverse}
+        .g666::after{color:#8a0000;transform:translateX(4px);clip-path:inset(56% 0 0 0);animation:g666b 1.7s infinite linear alternate-reverse}
+        @keyframes g666a{0%{clip-path:inset(0 0 80% 0)}20%{clip-path:inset(30% 0 45% 0)}40%{clip-path:inset(10% 0 70% 0)}60%{clip-path:inset(50% 0 20% 0)}80%{clip-path:inset(5% 0 62% 0)}100%{clip-path:inset(38% 0 38% 0)}}
+        @keyframes g666b{0%{clip-path:inset(60% 0 10% 0)}25%{clip-path:inset(20% 0 55% 0)}50%{clip-path:inset(72% 0 5% 0)}75%{clip-path:inset(42% 0 30% 0)}100%{clip-path:inset(8% 0 78% 0)}}
+        @keyframes g666flick{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.35}94%{opacity:1}96%{opacity:.5;transform:translateX(2px)}97%{opacity:1;transform:none}}
+        @media (prefers-reduced-motion:reduce){.g666,.g666::before,.g666::after{animation:none}}
+
+        /* Tagline elegan */
+        .free-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px}
+        .free-line{flex:0 1 70px;height:1px;background:linear-gradient(90deg,transparent,rgba(147,197,253,.8));transform-origin:right;animation:freeLine 1.2s .3s cubic-bezier(.2,.7,.2,1) both}
+        .free-line:last-child{background:linear-gradient(270deg,transparent,rgba(147,197,253,.8));transform-origin:left}
+        .tagline.free{margin:0;font-weight:700;font-size:clamp(11px,3.1vw,15px);letter-spacing:.3em;text-transform:uppercase;text-align:center;
+            background:linear-gradient(100deg,#7dd3fc 0%,#bfdbfe 28%,#fff 46%,#bfdbfe 62%,#60a5fa 100%);background-size:260% 100%;
+            -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+            animation:freeIn 1s .1s cubic-bezier(.2,.7,.2,1) both,freeShine 5s 1.1s linear infinite}
+        .free-note{max-width:520px;margin:14px auto 0;font-size:12.5px;line-height:1.7;font-style:italic;color:var(--text-gray);opacity:0;animation:freeNote 1s 1.1s ease forwards}
+        @keyframes freeIn{from{opacity:0;transform:translateY(8px);letter-spacing:.5em}to{opacity:1;transform:none;letter-spacing:.3em}}
+        @keyframes freeShine{from{background-position:130% 0}to{background-position:-130% 0}}
+        @keyframes freeLine{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+        @keyframes freeNote{to{opacity:.85}}
+        @media (prefers-reduced-motion:reduce){.tagline.free,.free-line{animation:none}.free-note{animation:none;opacity:.85}}
+        .rel-info{margin-top:10px;font-size:12px;color:var(--text-gray);line-height:1.6;text-align:center}
     </style>
 </head>
 <body>
     <div class="bg-orbs"><i></i><i></i><i></i></div>
     <canvas id="bgFx" aria-hidden="true"></canvas>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Buka menu fitur">☰</button>
+    <div class="scrim" id="scrim"></div>
+    <nav class="side" id="side" aria-label="Menu fitur">
+        <div class="side-head">Fitur</div>
+        <div class="side-sub">Semua fitur aktif</div>
+        <button class="tab-btn active" data-tab="home">🏠 Beranda</button>
+        <div class="side-grp">Video</div>
+        <button class="tab-btn" data-tab="patch">🚀 Patch</button>
+        <button class="tab-btn" data-tab="analyzer">🔍 Analyzer Video Internal</button>
+        <button class="tab-btn" data-tab="tiktok">🎵 TikTok Analyzer</button>
+        <div class="side-grp">Download</div>
+        <button class="tab-btn" data-tab="ext">🧩 Download Ekstensi</button>
+        <button class="tab-btn" data-tab="download">⬇️ Download Video</button>
+        <button class="tab-btn" data-tab="apk">📱 Download APK</button>
+        <div class="side-grp">Foto</div>
+        <button class="tab-btn" data-tab="photo">🖼️ Enhance Foto</button>
+        <button class="tab-btn" data-tab="resolution">📐 Ubah Resolusi</button>
+    </nav>
+
     <div class="container">
         <header>
-            <div class="logo">⚡ <span class="glitch" data-text="MattXavieraTools">MattXavieraTools</span></div>
-            <div class="tagline">Smart Patch + FPS Boost 60 — Gratis & Aman</div>
+            <div class="logo" id="logoHome" title="Ke Beranda" style="cursor:pointer"><span class="glitch" data-text="MattXavieraTools">MattXavieraTools</span></div>
+            <div class="free-wrap"><span class="free-line"></span><div class="tagline free">ALL FEATURES ARE FREE TO USE</div><span class="free-line"></span></div>
             <div class="contact">
                 Belum paham cara pakainya? Chat saya langsung:
                 <div class="contact-links">
@@ -325,33 +407,95 @@
                     <a class="c-tg" href="https://t.me/MattXaviera" target="_blank" rel="noopener noreferrer">✈️ Telegram t.me/MattXaviera</a>
                 </div>
             </div>
+            <p class="free-note">Use it wisely. If there are any bugs or anything, chat with the author's Telegram or TikTok contacts above.</p>
         </header>
 
         <div class="main-card">
-            <h2>🎬 Patch Video MP4</h2>
+            <h2 id="pageTitle" style="display:none">🎬 Patch Video MP4</h2>
 
-            <div class="upload-area" id="uploadArea">
+            <div class="upload-area" id="uploadArea" style="display:none">
                 <div class="upload-icon">📁</div>
                 <div class="upload-text">Drag & Drop MP4 di sini</div>
                 <div class="upload-hint">atau klik untuk pilih file (Max 500MB)</div>
                 <input type="file" id="fileInput" accept="video/mp4,video/quicktime,.mp4,.mov">
             </div>
 
-            <div class="file-info" id="fileInfo">
+            <div class="file-info" id="fileInfo" style="display:none">
                 <div class="file-name" id="fileName"></div>
                 <div class="file-size" id="fileSize"></div>
             </div>
 
-            <div class="tab-container">
-                <button class="tab-btn active" data-tab="patch">🚀 Patch</button>
-                <button class="tab-btn" data-tab="analyzer">🔍 Analyzer</button>
-                <button class="tab-btn" data-tab="tiktok">🎵 TikTok</button>
-                <button class="tab-btn" data-tab="download">⬇️ Download</button>
-                <button class="tab-btn" data-tab="photo">🖼️ Foto</button>
-                <button class="tab-btn" data-tab="resolution">📐 Resolusi</button>
+
+            <div class="tab-content active" id="tab-home">
+                <div class="hero">
+                    <div class="g666-wrap" aria-hidden="true"><span class="g666" data-text="666">666</span></div>
+                    <h2 id="greet">Halo, selamat datang!</h2>
+                    <p>Terima kasih sudah mampir di <b>MattXavieraTools</b>. Di sini kamu bisa memperbaiki &amp; menganalisis video, mengunduh video TikTok, sampai mempertajam dan memperbesar foto, semuanya gratis. Mau pakai apa hari ini? Pilih fiturnya di bawah, atau buka menu <b>☰</b> di kiri.</p>
+                </div>
+                <div class="howto">
+                    <h3>📖 Cara pakai singkat</h3>
+                    <ol>
+                        <li>Pilih fitur yang kamu butuhkan dari kartu di bawah atau dari menu samping.</li>
+                        <li>Upload file (video/foto) atau tempel link, sesuai petunjuk di tiap fitur.</li>
+                        <li>Tekan tombol prosesnya, tunggu selesai, lalu download hasilnya.</li>
+                    </ol>
+                    <p class="howto-note">🔒 Patch, Analyzer, Enhance Foto, dan Ubah Resolusi diproses di perangkatmu, file tidak diupload ke server. Fitur berbasis link (TikTok Analyzer &amp; Download Video) memakai layanan pihak ketiga (tikwm.com) untuk membaca info video.</p>
+                </div>
+                <h3 class="home-h">Mau pakai apa?</h3>
+                <div class="home-grid">
+                    <button class="fcard" type="button" data-go="patch">
+                        <div class="ft">🚀 Patch</div>
+                        <div class="fd">Perbaiki &amp; siapkan video MP4 supaya rapi di TikTok: inject watermark, fix metadata, FPS Boost 60, atau re-encode Ultra HD / 120 FPS.</div>
+                        <div class="fh"><b>Cara:</b> Upload MP4 → atur opsi → tekan Patch → download hasilnya.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                    <button class="fcard" type="button" data-go="analyzer">
+                        <div class="ft">🔍 Analyzer Video Internal</div>
+                        <div class="fd">Bedah file MP4-mu: resolusi, fps, bitrate, GOP, codec, audio, warna/HDR.</div>
+                        <div class="fh"><b>Cara:</b> Upload MP4 → tekan Analyze Video.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                    <button class="fcard" type="button" data-go="tiktok">
+                        <div class="ft">🎵 TikTok Analyzer</div>
+                        <div class="fd">Analisis video TikTok langsung dari link, tanpa download file, lengkap dengan statistik &amp; engagement.</div>
+                        <div class="fh"><b>Cara:</b> Tempel link TikTok → Analisis dari Link.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                    <button class="fcard" type="button" data-go="ext">
+                        <div class="ft">🧩 Download Ekstensi</div>
+                        <div class="fd">Unduh extension MattXavieraTools (ZIP) untuk browser.</div>
+                        <div class="fh"><b>Cara:</b> Download ZIP → ekstrak → Load unpacked di chrome://extensions.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                    <button class="fcard" type="button" data-go="download">
+                        <div class="ft">⬇️ Download Video</div>
+                        <div class="fd">Simpan video TikTok (HD tanpa watermark, Normal, audio MP3) atau link .mp4 langsung.</div>
+                        <div class="fh"><b>Cara:</b> Tempel link → Ambil Video → pilih file yang mau diunduh.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                    <button class="fcard" type="button" data-go="apk">
+                        <div class="ft">📱 Download APK</div>
+                        <div class="fd">Unduh aplikasi Android MattXavieraTools (file APK).</div>
+                        <div class="fh"><b>Cara:</b> Download APK → buka file → izinkan instalasi → instal.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                    <button class="fcard" type="button" data-go="photo">
+                        <div class="ft">🖼️ Enhance Foto</div>
+                        <div class="fd">Pertajam foto: Detail, Structure, Sharpen, Denoise. Tiap fitur bisa diaktifkan/dimatikan sendiri.</div>
+                        <div class="fh"><b>Cara:</b> Pilih foto → atur toggle &amp; slider → Enhance → download.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                    <button class="fcard" type="button" data-go="resolution">
+                        <div class="ft">📐 Ubah Resolusi</div>
+                        <div class="fd">Perbesar foto ke Full HD, 2K, Ultra HD, atau ukuran kustom.</div>
+                        <div class="fh"><b>Cara:</b> Pilih foto → pilih resolusi → Perbesar → download.</div>
+                        <div class="fgo">Buka fitur →</div>
+                    </button>
+                </div>
+                <p class="howto-note" style="margin-top:16px;text-align:center;">Bingung cara pakainya? Chat langsung lewat TikTok atau Telegram di bagian atas halaman.</p>
             </div>
 
-            <div class="tab-content active" id="tab-patch">
+            <div class="tab-content" id="tab-patch">
                 <div class="form-group">
                     <label for="watermark">Watermark Text</label>
                     <input type="text" id="watermark" value="MattXavieraTools" placeholder="Masukkan watermark">
@@ -395,7 +539,7 @@
                     <div class="enc-opts" id="encOpts">
                         <div class="enc-row">
                             <div class="enc-col"><label class="sm" for="encRes">Resolusi</label>
-                                <select class="sel" id="encRes"><option value="orig">Original</option><option value="1440">2K (1440p)</option><option value="2160" selected>Ultra HD 4K (2160p)</option></select></div>
+                                <select class="sel" id="encRes"><option value="orig">Original</option><option value="720">HD 720p</option><option value="1080">Full HD 1080p</option><option value="1440">2K (1440p)</option><option value="2160" selected>4K Ultra HD (2160p)</option></select></div>
                             <div class="enc-col"><label class="sm" for="encFps">Frame rate</label>
                                 <select class="sel" id="encFps"><option value="orig">Original</option><option value="60" selected>60 fps</option><option value="120">120 fps</option></select></div>
                             <div class="enc-col"><label class="sm" for="encBr">Bitrate</label>
@@ -463,27 +607,47 @@
                 </p>
             </div>
 
-            <div class="tab-content" id="tab-download">
+            <div class="tab-content" id="tab-ext">
                 <div class="ext-card">
                     <h3>🧩 Download Extensi MattXavieraTools</h3>
                     <p>Unduh extension MattXavieraTools (file ZIP) lewat MediaFire.</p>
-                    <a class="btn-ext" href="https://www.mediafire.com/file/mikcc6hkalcovn2/MattXavieraTools.zip/file" target="_blank" rel="noopener noreferrer">⬇️ Download Extensi (.zip)</a>
+                    <a class="btn-ext" id="extBtn" href="https://www.mediafire.com/file/mikcc6hkalcovn2/MattXavieraTools.zip/file" target="_blank" rel="noopener noreferrer">⬇️ Download Extensi (.zip)</a>
+                    <div class="rel-info" id="extRel"></div>
                     <div class="ext-steps">
                         1. Download dan ekstrak file ZIP.<br>
                         2. Buka <b>chrome://extensions</b> lalu aktifkan <b>Developer mode</b>.<br>
                         3. Klik <b>Load unpacked</b> dan pilih folder hasil ekstrak.
                     </div>
                 </div>
+            </div>
+
+            <div class="tab-content" id="tab-download">
                 <div class="form-group">
                     <label for="dlUrl">Link Video</label>
                     <div class="tt-row">
-                        <input type="text" class="tt-input" id="dlUrl" inputmode="url" autocomplete="off" placeholder="Tempel link video di sini">
+                        <input type="text" class="tt-input" id="dlUrl" inputmode="url" autocomplete="off" placeholder="Tempel link TikTok (vt.tiktok.com/…) atau link .mp4">
                         <button class="tt-mini" id="dlPaste" type="button">📋 Tempel</button>
                     </div>
                 </div>
-                <button class="btn btn-download" id="dlBtn">⬇️ Download dari Link</button>
+                <button class="btn btn-download" id="dlBtn">⬇️ Ambil Video dari Link</button>
                 <div class="status" id="dlStatus"></div>
-                <div class="coming-soon">🚧 Fitur <b>Download via link</b> masih dalam pengembangan dan belum aktif. Tampilannya sudah disiapkan, logikanya menyusul.</div>
+                <div id="dlResult"></div>
+                <p style="color:var(--text-gray);font-size:12px;margin-top:16px;line-height:1.6;">Mendukung link TikTok (vt., vm., tiktok.com/@user/video/…) dan link langsung .mp4. Pilihan: HD tanpa watermark, Normal, dengan watermark, dan audio MP3. Info video diambil lewat resolver pihak ketiga (tikwm.com). Kalau tombol unduh diblokir browser, pakai tombol 🔗 Buka lalu simpan videonya. Hormati hak cipta kreator, pakai untuk keperluan pribadi.</p>
+            </div>
+
+            <div class="tab-content" id="tab-apk">
+                <div class="ext-card">
+                    <h3>📱 Download APK MattXavieraTools</h3>
+                    <p>Unduh aplikasi Android (file APK).</p>
+                    <a class="btn-ext" id="apkBtn" target="_blank" rel="noopener noreferrer">⬇️ Download APK</a>
+                    <div class="rel-info" id="apkRel"></div>
+                    <div class="ext-steps">
+                        1. Download file APK.<br>
+                        2. Buka file-nya dan izinkan <b>Instal dari sumber tidak dikenal</b> bila diminta.<br>
+                        3. Instal lalu buka aplikasinya.<br>
+                        <i>Pasang APK hanya dari sumber yang kamu percaya.</i>
+                    </div>
+                </div>
             </div>
 
             <div class="tab-content" id="tab-photo">
@@ -532,9 +696,9 @@
                     <div class="enhance-control" id="ctlDenoise" style="margin-bottom:0;">
                         <div class="ctl-head">
                             <label class="sw" title="Aktif/nonaktif"><input type="checkbox" id="tgDenoise" checked aria-label="Aktifkan Denoise"><span class="knob"></span></label>
-                            <label class="ctl-name" for="enhDenoise"><span>🧹 Denoise (bersihkan bintik/burik)</span><span class="range-value" id="enhDenoiseVal">60</span></label>
+                            <label class="ctl-name" for="enhDenoise"><span>🧹 Denoise (bersihkan bintik/burik)</span><span class="range-value" id="enhDenoiseVal">30</span></label>
                         </div>
-                        <input type="range" id="enhDenoise" min="0" max="100" value="60">
+                        <input type="range" id="enhDenoise" min="0" max="100" value="30">
                     </div>
                 </div>
 
@@ -584,9 +748,10 @@
                 <div class="form-group">
                     <label for="resTarget">Resolusi hasil (sisi terpanjang)</label>
                     <select class="sel" id="resTarget">
-                        <option value="fhd">Full HD (1920 px)</option>
+                        <option value="hd">HD 720p (1280 px)</option>
+                        <option value="fhd">Full HD 1080p (1920 px)</option>
                         <option value="2k" selected>2K (2560 px)</option>
-                        <option value="uhd">Ultra HD (3840 px)</option>
+                        <option value="uhd">4K Ultra HD (3840 px)</option>
                         <option value="custom">Kustom…</option>
                     </select>
                 </div>
@@ -648,12 +813,13 @@
                 <h3 style="color: var(--blue-light); margin-bottom: 12px;">ℹ️ Fitur MattXavieraTools</h3>
                 <ul style="list-style: none; color: var(--text-gray);">
                     <li style="padding: 6px 0;">✓ <strong>Patch MP4</strong> - Inject watermark, fix metadata, optimasi untuk TikTok</li>
-                    <li style="padding: 6px 0;">✓ <strong>Analyzer</strong> - Resolusi, fps, bitrate, GOP, codec, audio, warna/HDR (parser internal)</li>
-                    <li style="padding: 6px 0;">✓ <strong>TikTok</strong> - Tempel link langsung dianalisis tanpa download file + statistik video (atau analisis via upload)</li>
-                    <li style="padding: 6px 0;">✓ <strong>Download Extensi</strong> - Unduh extension MattXavieraTools (ZIP) di tab Download</li>
-                    <li style="padding: 6px 0;">✓ <strong>Download</strong> - Download video via link <em>(segera hadir)</em></li>
+                    <li style="padding: 6px 0;">✓ <strong>Analyzer Video Internal</strong> - Resolusi, fps, bitrate, GOP, codec, audio, warna/HDR (parser internal)</li>
+                    <li style="padding: 6px 0;">✓ <strong>TikTok Analyzer</strong> - Tempel link langsung dianalisis tanpa download file + statistik video (atau analisis via upload)</li>
+                    <li style="padding: 6px 0;">✓ <strong>Download Extensi</strong> - Unduh extension MattXavieraTools (ZIP) di menu Download Ekstensi</li>
+                    <li style="padding: 6px 0;">✓ <strong>Download Video</strong> - TikTok (HD tanpa watermark, Normal, audio MP3) atau link .mp4 langsung</li>
+                    <li style="padding: 6px 0;">✓ <strong>Download APK</strong> - Unduh aplikasi Android</li>
                     <li style="padding: 6px 0;">✓ <strong>Enhance Foto</strong> - Detail, structure, sharpen, denoise dengan toggle aktif/nonaktif per fitur (mode Offline; Online AI segera hadir)</li>
-                    <li style="padding: 6px 0;">✓ <strong>Resolusi Foto</strong> - fitur terpisah: perbesar ke Full HD / 2K / Ultra HD / kustom</li>
+                    <li style="padding: 6px 0;">✓ <strong>Ubah Resolusi</strong> - fitur terpisah: perbesar ke Full HD / 2K / Ultra HD / kustom</li>
                     <li style="padding: 6px 0;">✓ <strong>Ultra HD / 120 FPS</strong> - re-encode nyata di browser: upscale 2K/4K dan fps 60/120 (butuh Chrome/Edge terbaru)</li>
                     <li style="padding: 6px 0;">✓ <strong>FPS Boost 60</strong> - Duplikasi frame container, file dibaca 60fps</li>
                     <li style="padding: 6px 0;">✓ 100% client-side - file tidak diupload ke server</li>
@@ -664,7 +830,18 @@
                 <summary>📝 Changelog</summary>
                 <div class="acc-body">
                     <div class="cl-entry">
-                        <div class="cl-date">16 Oktober 2026 — Update terbaru</div>
+                        <div class="cl-date">17 Oktober 2026 — Update terbaru</div>
+                        <ul class="cl-list">
+                            <li>🏠 <b>Beranda baru:</b> sapaan untuk pengunjung, cara pakai singkat, dan kartu info tiap fitur</li>
+                            <li>🔴 <b>Animasi 666</b> merah glitch di Beranda; ikon ⚡ di logo dihapus</li>
+                            <li>📂 <b>Menu samping (slide kiri):</b> semua fitur dipisah per menu dan aktif</li>
+                            <li>🔍 <b>Analyzer Video Internal</b> dan 🎵 <b>TikTok Analyzer:</b> nama menu diperjelas</li>
+                            <li>⬇️ <b>Download Video sekarang aktif</b> (TikTok &amp; link .mp4), 🧩 Download Ekstensi dan 📱 Download APK jadi menu sendiri</li>
+                            <li>🖼️ <b>Enhance Foto</b> dan 📐 <b>Ubah Resolusi</b> terpisah</li>
+                        </ul>
+                    </div>
+                    <div class="cl-entry" style="margin-top:14px;">
+                        <div class="cl-date">16 Oktober 2026</div>
                         <ul class="cl-list">
                             <li>🧩 <b>Download Extensi:</b> tombol unduh extension MattXavieraTools (ZIP) di tab Download</li>
                         </ul>
@@ -729,7 +906,7 @@
 
         // Tabs
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+            btn.addEventListener('click', () => { activateTab(btn.dataset.tab); closeSide(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
         });
 
         // Upload
@@ -2404,10 +2581,28 @@
             el.className = 'status';
             if (type) { el.classList.add('show', type); el.textContent = message; }
         }
+        const TAB_META = { home: ['🏠 Beranda', 0], patch: ['🎬 Patch Video MP4', 1], analyzer: ['🔍 Analyzer Video Internal', 1], tiktok: ['🎵 TikTok Analyzer', 1], ext: ['🧩 Download Ekstensi', 0], download: ['⬇️ Download Video', 0], apk: ['📱 Download APK', 0], photo: ['🖼️ Enhance Foto', 0], resolution: ['📐 Ubah Resolusi', 0] };
         function activateTab(name) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + name));
+            const m = TAB_META[name] || ['', 1];
+            const pt = document.getElementById('pageTitle'); pt.textContent = m[0]; pt.style.display = name === 'home' ? 'none' : '';
+            document.getElementById('uploadArea').style.display = m[1] ? '' : 'none';
+            document.getElementById('fileInfo').style.display = m[1] ? '' : 'none';
         }
+        const sideEl = document.getElementById('side'), scrimEl = document.getElementById('scrim');
+        function openSide() { sideEl.classList.add('open'); scrimEl.classList.add('show'); }
+        function closeSide() { sideEl.classList.remove('open'); scrimEl.classList.remove('show'); }
+        document.getElementById('menuBtn').addEventListener('click', () => sideEl.classList.contains('open') ? closeSide() : openSide());
+        scrimEl.addEventListener('click', closeSide);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSide(); });
+        let swX = 0, swY = 0;
+        document.addEventListener('touchstart', e => { swX = e.touches[0].clientX; swY = e.touches[0].clientY; }, { passive: true });
+        document.addEventListener('touchend', e => {
+            const t = e.changedTouches[0], dx = t.clientX - swX, dy = t.clientY - swY;
+            if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+            if (dx > 0 && swX < 32) openSide(); else if (dx < 0 && sideEl.classList.contains('open')) closeSide();
+        }, { passive: true });
 
         function setSelectedFile(file, origin) {
             selectedFile = file;
@@ -2498,20 +2693,133 @@
             try { ttUrl.value = await navigator.clipboard.readText(); } catch (e) { showStatusEl(ttStatus, 'error', 'Izin clipboard ditolak \u2014 tempel manual ke kolom link.'); }
         });
 
-        // ── Tab Download (via link) — PLACEHOLDER, logika diisi nanti ──
-        const dlUrl = document.getElementById('dlUrl');
-        const dlStatus = document.getElementById('dlStatus');
-        function dlRun() {
+        // ── Beranda: sapaan, kartu fitur, logo ──
+        (function () {
+            const hr = new Date().getHours();
+            const s = hr < 11 ? 'Selamat pagi' : hr < 15 ? 'Selamat siang' : hr < 18 ? 'Selamat sore' : 'Selamat malam';
+            document.getElementById('greet').textContent = s + ', selamat datang! 👋';
+            const go = k => { activateTab(k); closeSide(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+            document.querySelectorAll('.fcard').forEach(c => c.addEventListener('click', () => go(c.dataset.go)));
+            document.getElementById('logoHome').addEventListener('click', () => go('home'));
+        })();
+
+        // ── Download Video (aktif) ──
+        const dlUrl = document.getElementById('dlUrl'), dlStatus = document.getElementById('dlStatus');
+        const dlBtn = document.getElementById('dlBtn'), dlResult = document.getElementById('dlResult');
+        let dlBusy = false, dlItems = [];
+        async function dlResolve(url, signal) {
+            const api = 'https://www.tikwm.com/api/?hd=1&url=' + encodeURIComponent(url); let last = null;
+            for (let i = 0; i < 3; i++) {
+                const { json } = await ttFetchJson(api, signal);
+                if (json && json.code === 0 && json.data) return { meta: ttNormalizeTikwm(json), music: ttAbs(json.data.music, 'https://www.tikwm.com'), images: json.data.images || [] };
+                last = new Error(json && json.msg ? json.msg : 'respon API tidak valid');
+                if (/limit|second/i.test(String(json && json.msg || ''))) { await ttSleep(1500, signal); continue; }
+                break;
+            }
+            throw last;
+        }
+        function dlRender(title, cover, sub, items) {
+            dlItems = items;
+            dlResult.innerHTML = '<div class="dl-meta">' + (cover ? '<img src="' + anEsc(cover) + '" referrerpolicy="no-referrer" alt="">' : '') +
+                '<div class="dl-t"><b>' + anEsc(title || 'Video') + '</b><br>' + anEsc(sub || '') + '</div></div>' +
+                items.map((it, i) => '<div class="dl-row"><button class="btn btn-download" data-dl="' + i + '" type="button">' + anEsc(it.label) + (it.size ? ' (' + formatSize(it.size) + ')' : '') + '</button>' +
+                    '<a class="tt-mini" href="' + anEsc(it.url) + '" target="_blank" rel="noopener noreferrer" download="' + anEsc(it.name) + '">🔗 Buka</a></div>').join('');
+        }
+        async function dlRun() {
             const raw = dlUrl.value.trim();
             if (!raw) { showStatusEl(dlStatus, 'error', '\u274C Tempel link video dulu.'); return; }
-            // TODO: implementasi download via link diletakkan di sini
-            showStatusEl(dlStatus, 'loading', '\u{1F6A7} Fitur Download via link belum aktif \u2014 segera hadir.');
+            if (!/^https?:\/\//i.test(raw)) { showStatusEl(dlStatus, 'error', '\u274C Link harus diawali http:// atau https://'); return; }
+            if (dlBusy) return; dlBusy = true; dlBtn.disabled = true; dlResult.innerHTML = '';
+            showStatusEl(dlStatus, 'loading', '\u23F3 Mengambil info video...');
+            try {
+                if (/\.(mp4|mov|webm)(\?|#|$)/i.test(raw)) {
+                    dlRender('Link video langsung', null, raw.slice(0, 80), [{ label: '⬇️ Download Video', url: raw, name: 'video_' + Date.now() + '.mp4' }]);
+                } else {
+                    const r = await dlResolve(raw, new AbortController().signal), m = r.meta, base = 'tiktok_' + (m.id || Date.now()), items = [];
+                    if (m.urls.hd) items.push({ label: '⬇️ Video HD (tanpa watermark)', url: m.urls.hd, name: base + '_hd.mp4', size: m.sizes.hd });
+                    if (m.urls.sd && m.urls.sd !== m.urls.hd) items.push({ label: '⬇️ Video Normal (tanpa watermark)', url: m.urls.sd, name: base + '_sd.mp4', size: m.sizes.sd });
+                    if (m.urls.wm) items.push({ label: '⬇️ Video dengan watermark', url: m.urls.wm, name: base + '_wm.mp4', size: m.sizes.wm });
+                    if (r.music) items.push({ label: '🎵 Audio (MP3)', url: r.music, name: base + '.mp3' });
+                    r.images.forEach((u, i) => items.push({ label: '🖼️ Foto ' + (i + 1), url: u, name: base + '_' + (i + 1) + '.jpg' }));
+                    if (!items.length) throw new Error('tidak ada file yang bisa diunduh dari link ini');
+                    dlRender(m.title, m.cover, (m.author ? '@' + m.author.id + ' • ' : '') + (m.duration ? ttMmss(m.duration) : ''), items);
+                }
+                showStatusEl(dlStatus, 'success', '\u2705 Siap. Pilih file yang mau diunduh.');
+            } catch (e) {
+                showStatusEl(dlStatus, 'error', '\u274C Gagal: ' + (e && e.message ? e.message : e) + '. Pastikan link TikTok valid dan tidak privat.');
+            } finally { dlBusy = false; dlBtn.disabled = false; }
         }
-        document.getElementById('dlBtn').addEventListener('click', dlRun);
+        dlResult.addEventListener('click', async e => {
+            const btn = e.target.closest('[data-dl]'); if (!btn) return;
+            const it = dlItems[+btn.dataset.dl], old = btn.textContent; btn.disabled = true; btn.textContent = '\u23F3 Mengunduh...';
+            try {
+                const r = await fetch(it.url, { credentials: 'omit' }); if (!r.ok) throw new Error('HTTP ' + r.status);
+                const b = await r.blob(), u = URL.createObjectURL(b), a = document.createElement('a');
+                a.href = u; a.download = it.name; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 60000);
+                showStatusEl(dlStatus, 'success', '\u2705 ' + it.name + ' (' + formatSize(b.size) + ') diunduh.');
+            } catch (err) {
+                showStatusEl(dlStatus, 'loading', '\u2139\uFE0F Unduhan langsung diblokir browser. Pakai tombol 🔗 Buka di sebelahnya, lalu simpan videonya (tekan lama atau menu ⋮ → Download).');
+            } finally { btn.disabled = false; btn.textContent = old; }
+        });
+        dlBtn.addEventListener('click', dlRun);
         dlUrl.addEventListener('keydown', e => { if (e.key === 'Enter') dlRun(); });
         document.getElementById('dlPaste').addEventListener('click', async () => {
             try { dlUrl.value = await navigator.clipboard.readText(); } catch (e) { showStatusEl(dlStatus, 'error', 'Izin clipboard ditolak \u2014 tempel manual ke kolom link.'); }
         });
+
+        // ── Download APK ──
+        const APK_LINK = ''; // ← tempel link download APK di sini (MediaFire / Google Drive / GitHub Releases)
+        (function () {
+            const b = document.getElementById('apkBtn');
+            if (APK_LINK) b.href = APK_LINK; else { b.setAttribute('aria-disabled', 'true'); b.textContent = '⏳ Link APK belum diisi'; }
+        })();
+
+        // ── Auto-update link APK & Ekstensi lewat GitHub ──
+        // Ekstensi: web memakai file MattXavieraTools.zip di repo (branch main). Timpa file itu dengan versi baru
+        // (nama file SAMA) → link tetap dan web langsung memakai yang terbaru.
+        // APK: sama, memakai MattXavieraTools.apk di repo MattXaviera/apk. Kalau 'file' dikosongkan, dicari di GitHub Releases (cocok untuk file >25 MB).
+        const GH = {
+            ext: { repo: 'MattXaviera/Extension', branch: 'main', file: 'MattXavieraTools.zip', re: /\.zip$/i },
+            apk: { repo: 'MattXaviera/apk', branch: 'main', file: 'MattXavieraTools.apk', re: /\.apk$/i }
+        };
+        (async function () {
+            const fmtD = d => new Date(d).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+            const jget = async url => {
+                const k = 'mx_gh:' + url;
+                try { const c = JSON.parse(localStorage.getItem(k) || 'null'); if (c && Date.now() - c.t < 600000) return c.d; } catch (e) { }
+                const r = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } });
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                const d = await r.json(); try { localStorage.setItem(k, JSON.stringify({ t: Date.now(), d })); } catch (e) { }
+                return d;
+            };
+            async function resolveTarget(t) {
+                if (t.file) {
+                    const enc = encodeURIComponent(t.file), url = 'https://github.com/' + t.repo + '/raw/' + t.branch + '/' + enc;
+                    let size, date;
+                    try {
+                        const [c, l] = await Promise.all([jget('https://api.github.com/repos/' + t.repo + '/contents/' + enc + '?ref=' + t.branch), jget('https://api.github.com/repos/' + t.repo + '/commits?path=' + enc + '&sha=' + t.branch + '&per_page=1')]);
+                        size = c.size; date = l[0] && l[0].commit && l[0].commit.committer && l[0].commit.committer.date;
+                    } catch (e) { if (/404/.test(e.message)) return null; }
+                    return { url, size, date };
+                }
+                try {
+                    const rels = (await jget('https://api.github.com/repos/' + t.repo + '/releases?per_page=15')).filter(x => !x.draft && !x.prerelease);
+                    for (const r of rels) { const a = (r.assets || []).find(x => t.re.test(x.name)); if (a) return { url: a.browser_download_url, ver: r.tag_name, date: r.published_at, size: a.size, note: (r.body || '').trim().replace(/\s+/g, ' ').slice(0, 160) }; }
+                } catch (e) { }
+                return null;
+            }
+            const fill = (btnId, infoId, label, f) => {
+                if (!f) return;
+                const b = document.getElementById(btnId); b.href = f.url; b.removeAttribute('aria-disabled'); b.textContent = label + (f.ver ? ' (' + f.ver + ')' : '');
+                const parts = [f.ver ? 'Versi ' + f.ver : '', f.date ? 'Diperbarui ' + fmtD(f.date) : '', f.size ? formatSize(f.size) : ''].filter(Boolean);
+                document.getElementById(infoId).textContent = parts.join(' • ') + (f.note ? ' — ' + f.note : '');
+            };
+            try {
+                const [ext, apk] = await Promise.all([resolveTarget(GH.ext), resolveTarget(GH.apk)]);
+                fill('extBtn', 'extRel', '⬇️ Download Extensi (.zip)', ext);
+                fill('apkBtn', 'apkRel', '⬇️ Download APK', apk);
+            } catch (e) { /* gagal: tombol tetap memakai link cadangan */ }
+        })();
 
         // ══════════════════════════════════════════════════════════════
         // ENHANCE FOTO — mode Offline (canvas, di perangkat)
@@ -2557,27 +2865,43 @@
                 enhBoxH(cur, tmp, w, h, r); enhBoxV(tmp, dst, w, h, r); cur = dst;
             }
         }
-        // d = Uint8ClampedArray RGBA. stages = [[nama, sigma, amount, threshold]]
+        // guided filter (He et al.) pada kecerahan: base halus yang TETAP menjaga tepi → tidak ada halo/efek HDR.
+        // r = radius (px), eps = (kekuatan tepi yang dilindungi)^2. Hasil base ditulis ke out.
+        function enhGuided(Y, out, tmp, P, w, h, r, eps) {
+            const n = w * h;
+            r = Math.max(1, Math.min(r, ((Math.min(w, h) - 1) >> 1) - 1));
+            enhBoxH(Y, tmp, w, h, r); enhBoxV(tmp, out, w, h, r);                 // out = mean(Y)
+            for (let i = 0; i < n; i++) P[i] = Y[i] * Y[i];
+            enhBoxH(P, tmp, w, h, r); enhBoxV(tmp, P, w, h, r);                   // P = mean(Y^2)
+            for (let i = 0; i < n; i++) { const m = out[i], v = Math.max(0, P[i] - m * m), a = v / (v + eps); P[i] = a; out[i] = m - a * m; }
+            enhBoxH(P, tmp, w, h, r); enhBoxV(tmp, P, w, h, r);
+            enhBoxH(out, tmp, w, h, r); enhBoxV(tmp, out, w, h, r);
+            for (let i = 0; i < n; i++) out[i] = P[i] * Y[i] + out[i];            // base
+        }
+        // d = Uint8ClampedArray RGBA. stages = [[nama, sigma/radius, amount, threshold, tone, eps]] (eps>0 → guided)
         async function enhApply(d, w, h, stages, onStage, dn, dnSigma) {
             if (!stages.length && !(dn > 0)) return;
             const n = w * h;
             const Y = new Float32Array(n), delta = new Float32Array(n), blur = new Float32Array(n), tmp = new Float32Array(n);
+            let P = null; // buffer ekstra, hanya dibuat kalau ada tahap guided
             for (let i = 0, p = 0; i < n; i++, p += 4) Y[i] = 0.299 * d[p] + 0.587 * d[p + 1] + 0.114 * d[p + 2];
             if (dn > 0) { // denoise sadar-tepi: area datar dihaluskan, tepi tajam dibiarkan
                 enhGauss(Y, blur, tmp, w, h, dnSigma || 1.2);
-                const T = 5 + 25 * dn, k0 = 0.3 + 0.65 * dn;
+                const T = 3 + 9 * dn, k0 = 0.2 + 0.5 * dn;
                 for (let i = 0; i < n; i++) {
                     const df = blur[i] - Y[i], a = df < 0 ? -df : df;
                     const k = a >= T ? 0 : 1 - a / T;
                     delta[i] = df * k * k * k0; Y[i] += delta[i];
                 }
             }
-            for (const [name, sigma, amt, thr] of stages) {
+            for (const [name, sigma, amt, thr, tone, eps] of stages) {
                 if (onStage) await onStage(name);
-                enhGauss(Y, blur, tmp, w, h, sigma);
+                if (eps > 0) { if (!P) P = new Float32Array(n); enhGuided(Y, blur, tmp, P, w, h, Math.round(sigma), eps); }
+                else enhGauss(Y, blur, tmp, w, h, sigma);
                 for (let i = 0; i < n; i++) {
                     let df = Y[i] - blur[i];
                     if (thr) { const a = df < 0 ? -df : df; df = a <= thr ? 0 : (df > 0 ? a - thr : thr - a); }
+                    if (tone) { const tn = (Y[i] - 127.5) / 127.5; df *= 1 - 0.75 * tn * tn; } // lindungi highlight/shadow
                     delta[i] += df * amt;
                 }
             }
@@ -2710,9 +3034,12 @@
                 };
                 const L = Math.max(ow, oh), stages = [];
                 const dn = 0; // denoise sudah dilakukan di resolusi asli sebelum upscale
-                if (o.detail > 0) stages.push(['Detail', Math.max(1, L * 0.012), o.detail / 100 * 0.5, 1]);
-                if (o.structure > 0) stages.push(['Structure', Math.max(1, L * 0.003), o.structure / 100 * 0.6, 2]);
-                if (o.sharpen > 0) stages.push(['Sharpen', Math.min(3, Math.max(0.8, 0.5 * scale + 0.4)), o.sharpen / 100 * 0.9, 2]);
+                // Detail (gaya Koloro): kontras tekstur lokal lewat filter terpandu → tajam & natural, tanpa halo
+                if (o.detail > 0) stages.push(['Detail', Math.max(4, L * 0.004), o.detail / 100 * 0.9, 0, true, 22 * 22]);
+                // Structure (gaya Efiko): tekstur sedang, tepi kuat dilindungi, bobot nada tengah
+                if (o.structure > 0) stages.push(['Structure', Math.max(2, L * 0.0012), o.structure / 100 * 0.85, 0, true, 14 * 14]);
+                // Sharpen (gaya Efiko): penajaman halus, radius ikut ukuran foto
+                if (o.sharpen > 0) stages.push(['Sharpen', Math.min(1.2, Math.max(0.7, 0.6 + L / 6000)), o.sharpen / 100 * 0.9, 2]);
                 if (stages.length || dn > 0) {
                     const ctx = canvas.getContext('2d');
                     const id = ctx.getImageData(0, 0, ow, oh);
@@ -2764,7 +3091,7 @@
         // ══════════════════════════════════════════════════════════════
         // RESOLUSI FOTO — fitur sendiri (upscale bertahap, tanpa Detail/Structure)
         // ══════════════════════════════════════════════════════════════
-        const RES_PRESET = { fhd: 1920, '2k': 2560, uhd: 3840 };
+        const RES_PRESET = { hd: 1280, fhd: 1920, '2k': 2560, uhd: 3840 };
         let resImg = null, resFile = null, resSrcUrl = null, resOutUrl = null, resBusy = false;
         const resStatus = document.getElementById('resStatus'), resBtn = document.getElementById('resBtn');
         const resDlBtn = document.getElementById('resDlBtn'), resResult = document.getElementById('resResult');
@@ -2996,7 +3323,7 @@
             return new Blob([ftyp, moov, mh].concat(data), { type: 'video/mp4' });
         }
 
-        // o: { res: 'orig'|1440|2160, fps: 'orig'|60|120, br: 'auto'|Mbps }
+        // o: { res: 'orig'|720|1080|1440|2160, fps: 'orig'|60|120, br: 'auto'|Mbps }
         async function matttzEncodeUHD(arr, dv, boxes, o, onProgress, ctrl) {
             if (typeof VideoDecoder === 'undefined' || typeof VideoEncoder === 'undefined' || typeof OffscreenCanvas === 'undefined')
                 throw new Error('Browser belum mendukung WebCodecs — pakai Chrome/Edge terbaru');
