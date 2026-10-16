@@ -17,15 +17,18 @@ jobs:
           mkdir -p www && cp index.html www/index.html
           npm init -y
           npm i @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
-          cat > capacitor.config.json <<'EOF'
+          cat > capacitor.config.json <<'EOF2'
           {
             "appId": "com.mattxaviera.tools",
             "appName": "MattXavieraTools",
             "webDir": "www",
             "plugins": { "CapacitorHttp": { "enabled": true } }
           }
-          EOF
+          EOF2
           npx cap add android
+          mkdir -p assets && cp icon-only.png assets/icon-only.png
+          npm i -D @capacitor/assets
+          npx capacitor-assets generate --android --iconBackgroundColor '#000000' --iconBackgroundColorDark '#000000'
           npx cap sync android
       - name: Build APK
         run: cd android && chmod +x gradlew && ./gradlew assembleDebug
